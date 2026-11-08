@@ -1,0 +1,2207 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light"> <!-- DEPLOY_VERSION_6000 -->
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#F1F5FC">
+    <title>Datariot — short videos with a point</title>
+    <meta name="description"
+        content="Discover useful ideas in short videos. Explore the reasoning with Orvelis AI and join the conversation with a video reply." />
+
+    <!-- Twitter Card data. The card image is versioned in its name: X caches
+         images by URL, so a new card needs a new file, not an overwrite. -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@datariot_xyz">
+    <meta name="twitter:title" content="Datariot — short videos with a point">
+    <meta name="twitter:description" content="Discover useful ideas in short videos. Explore the reasoning with Orvelis AI and join the conversation with a video reply.">
+    <meta name="twitter:image" content="https://info.datariot.xyz/assets/twitter-card-brand-20261021.png">
+    <meta name="twitter:image:alt" content="Datariot: short videos with a point. A phone plays a clip in the Datariot app, with real app screens fanned out behind it.">
+
+    <!-- Open Graph data -->
+    <meta property="og:site_name" content="Datariot">
+    <meta property="og:title" content="Datariot — short videos with a point">
+    <meta property="og:description" content="Discover useful ideas in short videos. Explore the reasoning with Orvelis AI and join the conversation with a video reply.">
+    <meta property="og:image" content="https://info.datariot.xyz/assets/twitter-card-brand-20261021.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:alt" content="Datariot: short videos with a point. A phone plays a clip in the Datariot app, with real app screens fanned out behind it.">
+    <meta property="og:url" content="https://info.datariot.xyz/">
+    <meta property="og:type" content="website">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Doto:wght@400..900&family=JetBrains+Mono:wght@300..800&family=Manrope:wght@300..800&family=Orbitron:wght@400..900&family=Syne:wght@600..800&family=Instrument+Serif:ital@0;1&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="style.css?v=discord-20261025" />
+    <!-- Cache-Bust-Hash: 5755257c-c1f2-4179-b6ef-7762c45251ae -->
+    <style>
+        :root {
+            --bg-main: #F1F5FC;
+            --text-primary: #050505;
+        }
+
+        [data-theme="dark"] {
+            --bg-main: #08090D;
+            --text-primary: #EEEEF0;
+        }
+
+        html,
+        body {
+            background-color: var(--bg-main) !important;
+            background: var(--bg-main) !important;
+            color: var(--text-primary) !important;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Sections stay transparent so the ambient backdrop on <body> shows
+           through; they used to paint flat white over it. */
+        .main,
+        .section,
+        #hero {
+            background: transparent !important;
+            color: var(--text-primary) !important;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* HARD CLEANUP: Remove all old background elements and wireframes */
+        .grid-overlay,
+        .ambient-glow,
+        .particle-canvas,
+        .hero__shimmer-bg,
+        .hero__shimmer-overlay,
+        #canvas-3d-hero,
+        #canvas-3d-middle,
+        .abstract-spin,
+        .hero__background-layer {
+            display: none !important;
+            opacity: 0 !important;
+            visibility: hidden !important;
+        }
+
+        #hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: transparent !important;
+            z-index: 100;
+        }
+
+        .hero__main-layout {
+            display: grid !important;
+            grid-template-columns: 1.2fr 0.8fr !important;
+            gap: 60px;
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 80px 100px !important;
+            position: relative;
+            z-index: 150;
+            align-items: center;
+        }
+
+        .hero__content--left {
+            text-align: left;
+            z-index: 200;
+        }
+
+        .hero__brand-text {
+            font-size: clamp(48px, 8vw, 96px) !important;
+            font-weight: 900;
+            margin: 0 0 15px 0 !important;
+            color: var(--text-primary) !important;
+            letter-spacing: -0.045em;
+            line-height: 0.95;
+            text-transform: uppercase;
+            display: block !important;
+        }
+
+        .hero__tagline {
+            font-size: clamp(18px, 2vw, 24px) !important;
+            color: var(--text-secondary) !important;
+            margin-bottom: 40px !important;
+            max-width: 500px;
+            font-weight: 500;
+            display: block !important;
+        }
+
+        .hero__phone-showcase {
+            position: relative;
+            z-index: 200;
+            display: flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+
+        /* Clean White Phone Frame */
+        .hero__phone-frame {
+            display: block !important;
+            width: 280px;
+            height: 580px;
+            background: #ffffff !important;
+            border-radius: 48px;
+            border: 2px solid #e5e5e5 !important;
+            padding: 6px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+        }
+
+        [data-theme="dark"] .hero__phone-frame {
+            background: #0C0D12 !important;
+            border-color: #1f2937 !important;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        .phone__screen {
+            width: 100%;
+            height: 100%;
+            border-radius: 40px;
+            overflow: hidden;
+            /* dark so a slow or blocked video never flashes a white slab */
+            background: linear-gradient(180deg, #12141C 0%, #07080C 100%);
+            position: relative;
+        }
+
+        .phone__full-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block !important;
+        }
+
+        /* Hide UI overlaps */
+        .phone__status-bar,
+        .phone__notch,
+        .phone__video-overlay {
+            display: none !important;
+        }
+
+        /* Reactions - Removed as requested */
+        .hero__phone-reactions {
+            display: none !important;
+        }
+
+        /* App Downloads */
+        .app-downloads {
+            display: flex !important;
+            gap: 16px;
+            margin-top: 40px;
+            z-index: 300;
+        }
+
+        .app-dl-btn {
+            background: #000 !important;
+            color: #ffffff !important;
+            padding: 12px 24px !important;
+            border-radius: 14px !important;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            min-width: 170px;
+            text-decoration: none;
+            border: none !important;
+        }
+
+        @media (max-width: 1024px) {
+            .hero__main-layout {
+                display: flex !important;
+                flex-direction: column-reverse !important;
+                /* Video TOP, Text BOTTOM */
+                padding: 100px 20px 80px !important;
+                text-align: center !important;
+                gap: 50px;
+            }
+
+            .hero__content--left {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+                order: 2;
+            }
+
+            .hero__phone-showcase {
+                order: 1;
+                margin-top: 20px;
+            }
+
+            .hero__brand-text {
+                font-size: 48px !important;
+                margin-top: 10px !important;
+            }
+
+            .hero__tagline {
+                font-size: 16px !important;
+                margin-bottom: 30px !important;
+            }
+
+            .hero__phone-frame {
+                width: 260px;
+                /* Slightly larger on mobile if it's at the top */
+                height: 530px;
+            }
+
+            .app-downloads {
+                justify-content: center !important;
+                flex-wrap: wrap;
+                margin-top: 20px !important;
+            }
+        }
+
+        /* Fix for Simple Rules section on mobile */
+        @media (max-width: 1024px) {
+            .features__fragments {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                gap: 30px !important;
+                padding: 0 20px !important;
+            }
+
+            .feature-fragment,
+            .feature-fragment--large {
+                width: 100% !important;
+                max-width: 500px !important;
+                text-align: center !important;
+                margin: 0 auto !important;
+                padding: 30px 20px !important;
+            }
+
+            .fragment-content {
+                text-align: center !important;
+                align-items: center !important;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .fragment-visual {
+                margin: 0 auto 20px !important;
+            }
+        }
+    </style>
+    <script>
+        // Start light; only honor a theme explicitly saved for this page.
+        (function () {
+            var theme = 'light';
+            try {
+                if (localStorage.getItem('datariot-info-theme') === 'dark') theme = 'dark';
+            } catch (e) { }
+            document.documentElement.setAttribute('data-theme', theme);
+            var themeColor = document.querySelector('meta[name="theme-color"]');
+            if (themeColor) themeColor.setAttribute('content', theme === 'dark' ? '#08090D' : '#F1F5FC');
+        })();
+        function toggleTheme() {
+            var html = document.documentElement;
+            var next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', next);
+            var themeColor = document.querySelector('meta[name="theme-color"]');
+            if (themeColor) themeColor.setAttribute('content', next === 'dark' ? '#08090D' : '#F1F5FC');
+            try { localStorage.setItem('datariot-info-theme', next); } catch (e) { }
+        }
+    </script>
+    <link rel="icon" href="/datariot-info/favicon.ico?v=brand-20261021" />
+<style id="curiosity-editorial">
+/* The curiosity spread. All overrides are scoped to this section. */
+#catch.curiosity-edit { --cq-ink:#07080C; --cq-muted:rgba(7,8,12,.62); --cq-blue:var(--brand-ink,#07080C); --cq-line:rgba(7,8,12,.09); --cq-paper:#fff; --cq-tint:#EEF3FC; padding:85px 32px 90px!important; overflow:hidden; scroll-margin-top:86px; color:var(--cq-ink); }
+[data-theme="dark"] #catch.curiosity-edit { --cq-ink:#F1F2F5; --cq-muted:rgba(241,242,245,.62); --cq-blue:var(--brand-ice,#DAE6F7); --cq-line:rgba(217,228,255,.12); --cq-paper:#0E1017; --cq-tint:#171A23; }
+#catch .cq-shell { width:min(1150px,100%); margin:auto; }
+#catch .cq-mast { display:flex;justify-content:space-between;align-items:center;gap:20px;border-top:1px solid var(--cq-line);padding:20px 0;font:9px/1.5 var(--font-tech,monospace);letter-spacing:.07em;color:var(--cq-muted); }
+#catch .cq-mast>span:first-child {display:flex;gap:9px;align-items:center;color:var(--cq-ink)}
+#catch .cq-mast i {color:var(--cq-blue);font:normal 25px/1 sans-serif}
+#catch .cq-layout {display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(40px,7vw,100px);align-items:center;padding-top:35px}
+#catch .cq-copy {min-width:0}
+#catch .cq-kicker {display:flex;gap:20px;align-items:center;font:9px/1.5 var(--font-tech,monospace);letter-spacing:.1em;color:var(--cq-blue)}
+#catch .cq-kicker>span {font:25px/1 sans-serif}
+#catch .cq-title {position:relative;width:fit-content;margin:23px 0 25px;color:var(--cq-ink);font:700 clamp(48px,5.2vw,76px)/.98 'Syne',sans-serif;letter-spacing:-.06em;text-transform:none}
+#catch .cq-title em {font-style:normal;color:var(--cq-blue)}
+#catch .cq-title>span {display:inline-block;color:var(--cq-blue);font:38px/1 sans-serif;vertical-align:top;margin:9px 0 0 14px}
+#catch .cq-lede {margin:0;color:var(--cq-muted);font:400 16px/1.65 var(--font-sans,sans-serif);letter-spacing:-.02em}
+#catch .cq-questions {display:block;width:100%;margin:37px 0 0}
+#catch .cq-pick {display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;font:8px/1.5 var(--font-tech,monospace);letter-spacing:.08em;color:var(--cq-muted)}
+#catch .cq-pick>span:last-child {font:20px/1 sans-serif;color:var(--cq-blue)}
+#catch .cq-topics {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+#catch .cq-topic {appearance:none;display:flex;flex-direction:column;align-items:start;position:relative;min-width:0;padding:0 0 13px;border:0;background:transparent;color:var(--cq-ink);text-align:left;cursor:pointer;border-radius:0}
+#catch .cq-topic__image {position:relative;display:block;width:100%;aspect-ratio:1.32;overflow:hidden;border-radius:4px;margin-bottom:13px;background:var(--cq-line)}
+#catch .cq-topic__image img {display:block;width:100%;height:100%;object-fit:cover;filter:saturate(.3);opacity:.7;transition:filter .2s,opacity .2s,transform .3s}
+#catch .cq-topic.is-selected img,#catch .cq-topic:hover img {filter:saturate(.9);opacity:1}
+#catch .cq-topic:hover img {transform:scale(1.05)}
+#catch .cq-topic__image i {position:absolute;left:7px;top:7px;color:#fff;font:normal 8px/1 var(--font-tech,monospace);padding:5px;background:#07080C75;border-radius:2px}
+#catch .cq-topic__selected {position:absolute;right:0;bottom:0;background:var(--cq-blue);color:var(--cq-paper);width:25px;height:25px;display:grid;place-items:center;font:20px/1 sans-serif;opacity:0;transition:opacity .2s}
+#catch .cq-topic.is-selected .cq-topic__selected {opacity:1}
+#catch .cq-topic small {font:8px/1.6 var(--font-tech,monospace);letter-spacing:.04em;color:var(--cq-muted);margin:0 0 3px;max-width:100%}
+#catch .cq-topic b {font:600 14px/1.4 var(--font-sans,sans-serif);letter-spacing:-.02em}
+#catch .cq-topic__line {position:absolute;bottom:0;left:0;right:0;height:1px;background:var(--cq-line)}
+#catch .cq-topic.is-selected .cq-topic__line {height:3px;background:var(--cq-blue)}
+#catch .cq-topic.is-selected small {color:var(--cq-blue)}
+#catch .cq-topic:focus-visible {outline:2px solid var(--cq-blue);outline-offset:5px}
+#catch .cq-process {display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:33px;padding-top:20px;border-top:1px solid var(--cq-line);color:var(--cq-muted);font:8px/1.5 var(--font-tech,monospace);letter-spacing:.04em}
+#catch .cq-process i {font:normal 16px/1 sans-serif;color:var(--cq-blue)}
+#catch .cq-process b {font-weight:500;color:var(--cq-blue)}
+#catch .cq-sheet {display:block;position:relative;isolation:isolate;width:100%;min-width:0;margin:0;padding:0;background:var(--cq-paper);border-radius:4px;box-shadow:0 20px 65px #07080C0b;transform:none;}
+#catch .cq-sheet::before {content:'';position:absolute;left:0;right:0;top:0;height:3px;background:var(--cq-blue)}
+#catch .cq-sheet__top {display:flex;justify-content:space-between;align-items:center;gap:15px;padding:22px 24px 18px;font:7px/1.5 var(--font-tech,monospace);letter-spacing:.06em;color:var(--cq-muted)}
+#catch .cq-sheet__top>span:first-child {color:var(--cq-blue)}
+#catch .cq-feature {display:block;position:relative;width:100%;aspect-ratio:auto;justify-self:auto;overflow:visible;margin:0;padding:0;background:transparent;color:var(--cq-ink);border:0;border-radius:0;box-shadow:none;transform:none;animation:none;text-decoration:none}
+#catch .cq-feature::after {display:none}
+#catch .cq-feature__media {position:relative;margin:0 14px;aspect-ratio:1.7;overflow:hidden;border-radius:2px;background:var(--cq-line)}
+#catch .cq-feature__media::after {content:'';position:absolute;inset:45% 0 0;background:linear-gradient(transparent,#07080C55);pointer-events:none}
+#catch .cq-feature .catch__poster {display:block;width:100%;height:100%;object-fit:cover;object-position:center;filter:saturate(.75);transition:transform .35s}
+#catch .cq-feature:hover .catch__poster {transform:scale(1.035)}
+#catch .cq-feature__duration {position:absolute;z-index:1;left:14px;bottom:14px;color:#fff;font:10px/1.4 var(--font-tech,monospace);letter-spacing:.03em}
+#catch .cq-feature__arrow {position:absolute;z-index:1;right:14px;bottom:12px;display:grid;place-items:center;width:40px;height:40px;background:#fff;color:#07080C;font:30px/1 sans-serif;border-radius:50%}
+#catch .cq-feature__copy {padding:23px 27px 24px}
+#catch .cq-feature__topic {display:block;color:var(--cq-blue);font:8px/1.6 var(--font-tech,monospace);letter-spacing:.09em}
+#catch .cq-feature h3 {position:static;max-width:none;margin:11px 0 17px;color:var(--cq-ink);font:600 clamp(25px,2.5vw,34px)/1.09 'Syne',sans-serif;letter-spacing:-.045em;text-transform:none}
+#catch .cq-feature__action {display:flex;justify-content:space-between;align-items:center;color:var(--cq-muted);font:11px/1.5 var(--font-sans,sans-serif)}
+#catch .cq-feature__action>span {color:var(--cq-blue);font:21px/1 sans-serif}
+#catch .cq-feature:focus-visible {outline:2px solid var(--cq-blue);outline-offset:5px}
+#catch .cq-idea {display:block;position:relative;z-index:1;justify-self:auto;width:auto;min-height:0;margin:0 14px;padding:20px 20px 23px;background:var(--cq-tint);color:var(--cq-ink);border:0;border-radius:2px;box-shadow:none;transform:none;animation:none}
+#catch .cq-idea__label {display:flex;align-items:center;gap:7px;font:7px/1.5 var(--font-tech,monospace);color:var(--cq-blue);letter-spacing:.07em}
+#catch .cq-idea__label>span:first-child {font:20px/1 sans-serif}
+#catch .cq-idea__annotation {margin-left:auto;font:20px/1 sans-serif}
+#catch .cq-idea p {margin:15px 0 12px;color:var(--cq-ink);font:600 26px/1.12 'Syne',sans-serif;letter-spacing:-.04em}
+#catch .cq-idea p em {font-style:normal;color:var(--cq-blue)}
+#catch .cq-idea .catch__idea-foot {display:block;color:var(--cq-muted);font:11px/1.65 var(--font-sans,sans-serif);max-width:40ch}
+#catch .cq-sheet__foot {display:flex;justify-content:space-between;align-items:center;padding:20px 24px;color:var(--cq-muted);font:6px/1.6 var(--font-tech,monospace);letter-spacing:.07em}
+#catch .cq-code {display:block;width:46px;height:15px;background:repeating-linear-gradient(90deg,var(--cq-ink) 0 1px,transparent 1px 3px,var(--cq-ink) 3px 5px,transparent 5px 7px);opacity:.4}
+/* Keep the fixed brand legible while content passes beneath it. */
+.curiosity-topbar {position:fixed;inset:0 0 auto;height:86px;background:var(--bg-main,#f1f5fc);border-bottom:1px solid var(--border,#d7dfe9);z-index:29000;pointer-events:none}
+.brandmark {z-index:29001}html.navx-open .curiosity-topbar {visibility:hidden}
+@media(max-width:850px) {
+ #catch .cq-layout {gap:35px}
+ #catch .cq-title {font-size:53px}
+ #catch .cq-title>span {font-size:28px;margin-left:7px}
+ #catch .cq-topic b {font-size:12px}
+ #catch .cq-topic small {font-size:6px}
+ #catch .cq-topics {gap:10px}
+ #catch .cq-feature__copy {padding:21px}
+ #catch .cq-sheet__top {padding-left:20px;padding-right:20px;font-size:6px}
+ #catch .cq-idea p {font-size:23px}
+}
+@media(max-width:660px) {
+ #catch.curiosity-edit {padding:43px 22px 55px!important}
+ #catch .cq-mast {padding:16px 0;font-size:8px;letter-spacing:.03em}
+ #catch .cq-mast>span:last-child {display:none}
+ #catch .cq-mast::after {content:'01 — 03';font:8px/1.5 var(--font-tech,monospace);color:var(--cq-muted)}
+ #catch .cq-layout {grid-template-columns:minmax(0,1fr);gap:29px;padding-top:27px}
+ #catch .cq-kicker {font-size:8px;gap:13px}
+ #catch .cq-kicker>span {font-size:21px}
+ #catch .cq-title {font-size:clamp(45px,12.5vw,69px);margin:18px 0 18px}
+ #catch .cq-title>span {font-size:31px;margin:5px 0 0 9px}
+ #catch .cq-lede {font-size:13px;line-height:1.65}
+ #catch .cq-questions {margin-top:27px}
+ #catch .cq-pick {font-size:7px;margin-bottom:12px}
+ #catch .cq-topics {gap:11px}
+ #catch .cq-topic__image {margin-bottom:10px;aspect-ratio:1.25}
+ #catch .cq-topic__image i {font-size:7px;left:5px;top:5px;padding:4px}
+ #catch .cq-topic__selected {width:22px;height:22px;font-size:18px}
+ #catch .cq-topic small {font-size:6.5px;letter-spacing:.02em}
+ #catch .cq-topic b {font-size:12px;line-height:1.4}
+ #catch .cq-process {margin-top:22px;padding-top:17px;font-size:6.5px;gap:8px}
+ #catch .cq-sheet__top {padding:19px 20px 16px;font-size:6px;letter-spacing:.03em}
+ #catch .cq-feature__media {margin:0 11px;aspect-ratio:1.6}
+ #catch .cq-feature__copy {padding:20px 23px}
+ #catch .cq-feature h3 {font-size:29px;line-height:1.08;margin:10px 0 17px}
+ #catch .cq-feature__topic {font-size:7px}
+ #catch .cq-feature__arrow {width:34px;height:34px;font-size:26px;right:11px;bottom:11px}
+ #catch .cq-feature__duration {font-size:9px;left:12px;bottom:11px}
+ #catch .cq-idea {margin:0 11px;padding:18px 19px 22px}
+ #catch .cq-idea p {font-size:25px;margin-top:15px}
+ #catch .cq-idea .catch__idea-foot {font-size:10px;line-height:1.7}
+ #catch .cq-sheet__foot {padding:18px 21px;font-size:5.5px}
+ .curiosity-topbar {height:76px}
+}
+@media(max-width:360px) {#catch.curiosity-edit {padding-left:18px!important;padding-right:18px!important}#catch .cq-topic small{font-size:6px}#catch .cq-topic b{font-size:11px}#catch .cq-feature h3{font-size:26px}#catch .cq-idea p{font-size:23px}}
+@media(prefers-reduced-motion:reduce) {#catch .cq-topic__image img,#catch .cq-feature .catch__poster,#catch .cq-topic__selected{transition:none}#catch.is-changing .catch__poster,#catch.is-changing .catch__idea p{animation:none}}
+
+/* Keep the small editorial labels readable at phone widths. */
+#catch .cq-mast {font-size:10px}
+#catch .cq-topic small {font-size:9px}
+#catch .cq-pick {font-size:9px}
+#catch .cq-sheet__top {font-size:8px}
+#catch .cq-feature__topic {font-size:9px}
+#catch .cq-idea__label {font-size:9px}
+#catch .cq-sheet__foot {font-size:7px}
+@media(max-width:850px){#catch .cq-topic small{font-size:8px}#catch .cq-sheet__top{font-size:7px}}
+@media(max-width:660px){#catch .cq-mast{font-size:9px}#catch .cq-kicker{font-size:9px}#catch .cq-mast::after{font-size:9px}#catch .cq-pick{font-size:8px}#catch .cq-topic small{font-size:8px}#catch .cq-topic b{font-size:13px}#catch .cq-process{font-size:8px}#catch .cq-sheet__top{font-size:8px}#catch .cq-feature__topic{font-size:9px}#catch .cq-idea__label{font-size:8px}#catch .cq-sheet__foot{font-size:7px}}
+@media(max-width:360px){#catch .cq-topic b{font-size:12px}#catch .cq-topic small{font-size:7px}#catch .cq-sheet__top{font-size:7px}}
+
+</style>
+<style id="arena-duel-design">
+/* The Arena — a compact editorial face-off, on the shared page background. */
+#debates.arena-duel {--duel-ink:#07080C;--duel-muted:rgba(7,8,12,.62);--duel-blue:var(--brand-ink,#07080C);--duel-line:rgba(7,8,12,.09);--duel-paper:#fff;--duel-tint:#EEF3FC;--arena-ink:var(--duel-ink);--arena-muted:var(--duel-muted);--arena-accent:var(--duel-blue);padding:80px 32px!important;scroll-margin-top:86px}
+[data-theme="dark"] #debates.arena-duel {--duel-ink:#F1F2F5;--duel-muted:rgba(241,242,245,.62);--duel-blue:var(--brand-ice,#DAE6F7);--duel-line:rgba(217,228,255,.12);--duel-paper:#0E1017;--duel-tint:#171A23}
+#debates .arena__inner {width:min(1120px,100%)}
+#debates .arena__masthead {border-top:1px solid var(--duel-line);padding-top:23px;gap:15px}
+#debates .arena__chapter {font:9px/1.5 var(--font-tech,monospace);letter-spacing:.1em;gap:12px;color:var(--duel-ink)}
+#debates .arena__chapter b {font:500 22px/1 var(--font-tech,monospace);letter-spacing:-.06em;color:var(--duel-blue)}
+#debates .arena__edition {font:8px/1.5 var(--font-tech,monospace);letter-spacing:.06em;color:var(--duel-muted)}
+#debates .arena__header {grid-template-columns:1.2fr 1fr;align-items:end;gap:80px;margin:46px 0 48px}
+#debates .arena__title {font:700 clamp(58px,7.4vw,100px)/.92 'Syne',sans-serif;letter-spacing:-.065em;color:var(--duel-ink)}
+#debates .arena__title em {color:var(--duel-blue)}
+#debates .arena__asterisk {font:45px/1 sans-serif;color:var(--duel-blue);top:3px;right:-55px;transform:none}
+#debates .arena__eyebrow {font:8px/1.6 var(--font-tech,monospace);letter-spacing:.06em;color:var(--duel-muted)}
+#debates .arena__intro p {font:500 23px/1.3 var(--font-sans,sans-serif);letter-spacing:-.04em;color:var(--duel-ink);margin:17px 0 14px}
+#debates .arena__instruction {font:12px/1.6 var(--font-sans,sans-serif);color:var(--duel-muted)}
+#debates .ar__topic-row {display:grid;grid-template-columns:1fr 2fr;align-items:center;gap:35px;border-top:1px solid var(--duel-line);border-bottom:0;padding:20px 0 0}
+#debates .ar__topic-label {font:9px/1.5 var(--font-tech,monospace);letter-spacing:.07em;color:var(--duel-muted)}
+#debates .ar__topic-label>span {font:20px/1 sans-serif;margin-left:15px;color:var(--duel-blue)}
+#debates .ar__topics {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;width:100%}
+#debates .ar-topic {position:relative;display:flex;align-items:center;justify-content:start;gap:12px;min-height:49px;padding:10px 0;border:0;border-bottom:1px solid var(--duel-line);border-radius:0;background:transparent;color:var(--duel-muted);font:500 13px/1.5 var(--font-sans,sans-serif);white-space:nowrap;transition:color .2s}
+#debates .ar-topic>span {font:8px/1.5 var(--font-tech,monospace);opacity:.8}
+#debates .ar-topic>i {font:normal 19px/1 sans-serif;margin-left:auto;opacity:0;color:var(--duel-blue);transition:opacity .2s}
+#debates .ar-topic:hover {background:transparent;color:var(--duel-ink)}
+#debates .ar-topic[aria-pressed="true"] {background:transparent;color:var(--duel-blue);border-bottom:3px solid var(--duel-blue)}
+#debates .ar-topic[aria-pressed="true"]>i {opacity:1}
+#debates .duel-question {padding:34px 0 26px}
+#debates .duel-question>span {font:8px/1.5 var(--font-tech,monospace);color:var(--duel-muted);letter-spacing:.1em}
+#debates .ar__question {font:600 clamp(27px,3.5vw,43px)/1.14 'Syne',sans-serif;letter-spacing:-.045em;color:var(--duel-ink);max-width:24ch;margin:12px 0 0}
+#debates .ar-sides {position:relative;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;align-items:stretch}
+#debates .ar-side {position:relative;display:flex;flex-direction:column;align-items:stretch;padding:0;border:0;border-radius:5px;background:var(--duel-paper);box-shadow:0 12px 40px #07080C05;overflow:hidden;transition:box-shadow .2s,transform .2s}
+#debates .ar-side--for {background:var(--duel-tint)}
+#debates .duel-art {position:relative;display:flex;align-items:center;justify-content:space-between;height:125px;padding:25px 30px 15px;overflow:hidden;border-bottom:1px solid var(--duel-line);color:var(--duel-blue)}
+#debates .duel-art::before {content:'';position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 23px,var(--duel-blue) 23px 24px);opacity:.035;pointer-events:none}
+#debates .ar__letter {position:static;display:block;width:auto;height:auto;border:0;border-radius:0;background:transparent;color:var(--duel-blue);font:700 87px/.9 'Syne',sans-serif;letter-spacing:-.08em}
+#debates .ar-side--against .ar__letter {color:var(--duel-ink)}
+#debates .duel-art svg {display:block;width:50%;height:82px;margin-left:15px;opacity:.7}
+#debates .ar__picked {position:absolute;right:18px;top:13px;font:7px/1.5 var(--font-tech,monospace);color:var(--duel-blue);letter-spacing:.06em;visibility:hidden}
+#debates .duel-body {padding:26px 30px 28px;display:flex;flex-direction:column;flex:1}
+#debates .ar__position {display:block;min-height:15px;font:8px/1.6 var(--font-tech,monospace);color:var(--duel-muted);letter-spacing:.07em}
+#debates .ar-side h3 {min-height:80px;font:600 clamp(30px,3.4vw,43px)/1.04 'Syne',sans-serif;letter-spacing:-.05em;color:var(--duel-ink);margin:16px 0 19px}
+#debates .ar-side blockquote {font:400 14px/1.75 var(--font-sans,sans-serif);letter-spacing:-.01em;color:var(--duel-muted);max-width:39ch;margin:0 0 28px}
+#debates .ar-vote {display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;min-height:48px;padding:0;margin-top:auto;border:0;border-top:1px solid var(--duel-line);border-radius:0;background:transparent;color:var(--duel-ink);font:600 13px/1.5 var(--font-sans,sans-serif);transition:color .2s}
+#debates .ar-vote__icon {display:grid;place-items:center;width:32px;height:32px;flex:none;border-radius:50%;color:var(--duel-blue);background:var(--duel-paper);font:24px/1 sans-serif;transition:background .2s,color .2s}
+#debates .ar-side--against .ar-vote__icon {background:var(--duel-tint)}
+#debates .ar-vote:hover {background:transparent;color:var(--duel-blue)}
+#debates .ar-vote:hover .ar-vote__icon {color:var(--duel-paper);background:var(--duel-blue)}
+#debates .ar-side.is-picked {box-shadow:inset 0 0 0 2px var(--duel-blue),0 12px 40px #07080C08;transform:translateY(-3px)}
+#debates .ar-side.is-picked .ar-vote {color:var(--duel-blue);background:transparent}
+#debates .ar-side.is-picked .ar__letter {color:var(--duel-blue);background:transparent}
+#debates .ar-side.is-picked .ar-vote__icon {background:var(--duel-blue);color:var(--duel-paper)}
+#debates .ar-side.is-picked .ar__picked {visibility:visible}
+#debates .ar__pivot {position:absolute;left:50%;top:93px;z-index:2;transform:translateX(-50%);display:grid;place-items:center;align-self:auto;width:43px;height:43px;padding:0;gap:0;background:var(--bg-main,#f1f5fc);border:1px solid var(--duel-line);border-radius:50%}
+#debates .ar__pivot::after {display:none}
+#debates .ar__pivot span {font:700 12px/1 'Syne',sans-serif;color:var(--duel-blue);letter-spacing:-.04em;transform:rotate(-9deg)}
+#debates .ar__challenge {display:grid;grid-template-columns:30px minmax(0,1fr) auto;align-items:start;gap:15px;margin-top:24px;padding:23px 25px;border:0;border-left:3px solid var(--duel-blue);background:var(--duel-paper);border-radius:0 3px 3px 0}
+#debates .ar__challenge-icon {font:30px/1 sans-serif;align-self:start;color:var(--duel-blue);padding-top:4px}
+#debates .ar__challenge-label {font:8px/1.5 var(--font-tech,monospace);letter-spacing:.07em;color:var(--duel-blue)}
+#debates .ar__challenge p {font:400 14px/1.6 var(--font-sans,sans-serif);color:var(--duel-ink);margin:8px 0 0;max-width:65ch}
+#debates .ar__reset {grid-column:auto;justify-self:auto;padding:4px 0 4px 10px;min-height:40px;color:var(--duel-blue);background:transparent;font:500 11px/1.5 var(--font-sans,sans-serif)}
+#debates .ar__reset[hidden] {display:none!important}
+#debates .ar__footer {margin-top:19px;gap:14px;font:10px/1.7 var(--font-sans,sans-serif);color:var(--duel-muted);align-items:center;flex-direction:row}
+#debates .ar__footer a {display:inline-flex;align-items:center;gap:12px;font:600 12px/1.5 var(--font-sans,sans-serif);color:var(--duel-ink)}
+#debates .ar__footer a>span {font:21px/1 sans-serif;color:var(--duel-blue);margin:0}
+#debates button:focus-visible,#debates a:focus-visible {outline:2px solid var(--duel-blue);outline-offset:4px}
+@media(max-width:850px) {
+ #debates .arena__header {gap:45px}
+ #debates .arena__title {font-size:65px}
+ #debates .arena__asterisk {font-size:34px;right:-40px}
+ #debates .arena__intro p {font-size:19px}
+ #debates .ar__topic-row {grid-template-columns:1fr 2.5fr;gap:25px}
+ #debates .ar__topics {gap:12px}
+ #debates .ar-topic {font-size:12px;gap:8px}
+ #debates .duel-body {padding:23px}
+ #debates .ar-side h3 {font-size:34px}
+ #debates .ar-side blockquote {font-size:13px}
+}
+@media(max-width:620px) {
+ #debates.arena-duel {padding:45px 22px 45px!important}
+ #debates .arena__masthead {padding-top:18px;gap:12px}
+ #debates .arena__chapter {font-size:8px;gap:9px;letter-spacing:.06em}
+ #debates .arena__chapter b {font-size:22px}
+ #debates .arena__edition {font-size:7px;text-align:right;max-width:20ch}
+ #debates .arena__header {grid-template-columns:minmax(0,1fr);margin:32px 0 29px;gap:21px}
+ #debates .arena__title {font-size:clamp(52px,14vw,76px);line-height:.92}
+ #debates .arena__asterisk {font-size:32px;right:-40px;top:3px}
+ #debates .arena__intro {padding:0}
+ #debates .arena__eyebrow {font-size:7px;letter-spacing:.05em}
+ #debates .arena__intro p {font-size:16px;max-width:36ch;margin:8px 0 8px;line-height:1.5}
+ #debates .arena__intro p br {display:none}
+ #debates .arena__instruction {font-size:11px}
+ #debates .ar__topic-row {grid-template-columns:minmax(0,1fr);gap:9px;padding:15px 0 0}
+ #debates .ar__topic-label {font-size:8px}
+ #debates .ar__topic-label>span {font-size:19px}
+ #debates .ar__topics {gap:14px}
+ #debates .ar-topic {min-height:46px;padding:7px 0;gap:8px;font-size:12px;flex:initial}
+ #debates .ar-topic>span {font-size:8px}
+ #debates .ar-topic>i {font-size:17px}
+ #debates .duel-question {padding:24px 0 23px}
+ #debates .duel-question>span {font-size:7px;letter-spacing:.07em}
+ #debates .ar__question {font-size:29px;line-height:1.1;margin-top:11px;max-width:20ch}
+ #debates .ar-sides {grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+ #debates .ar-side {padding:0;border-radius:4px}
+ #debates .duel-art {height:90px;padding:19px 16px 13px}
+ #debates .ar__letter {font-size:62px}
+ #debates .duel-art svg {width:54%;height:53px;margin-left:8px;opacity:.55}
+ #debates .ar__picked {top:7px;right:8px;font-size:6px;letter-spacing:.02em}
+ #debates .duel-body {padding:19px 16px 12px}
+ #debates .ar__position {font-size:7px;line-height:1.65;letter-spacing:.025em;min-height:26px}
+ #debates .ar-side h3 {font-size:clamp(20px,5.6vw,28px);line-height:1.1;min-height:72px;margin:9px 0 12px;letter-spacing:-.04em}
+ #debates .ar-side blockquote {font-size:12px;line-height:1.7;letter-spacing:-.01em;margin-bottom:19px;max-width:none}
+ #debates .ar-vote {font-size:11px;gap:6px;min-height:47px;line-height:1.4}
+ #debates .ar-vote__icon {width:25px;height:25px;font-size:19px}
+ #debates .ar__pivot {top:67px;width:31px;height:31px;padding:0}
+ #debates .ar__pivot span {font-size:9px}
+ #debates .ar__challenge {grid-template-columns:23px minmax(0,1fr);padding:20px 17px;gap:11px;margin-top:20px}
+ #debates .ar__challenge-icon {font-size:25px}
+ #debates .ar__challenge-label {font-size:7px;letter-spacing:.04em}
+ #debates .ar__challenge p {font-size:12px;line-height:1.65;margin-top:7px}
+ #debates .ar__reset {grid-column:2;justify-self:start;padding:0;min-height:35px;font-size:11px}
+ #debates .ar__footer {flex-direction:column-reverse;align-items:start;gap:12px;font-size:9px}
+ #debates .ar__footer a {font-size:11px}
+}
+@media(max-width:360px) {#debates.arena-duel{padding-left:18px!important;padding-right:18px!important}#debates .ar-topic{font-size:11px;gap:6px}#debates .ar__topics{gap:12px}#debates .duel-body{padding-left:13px;padding-right:13px}#debates .ar-side h3{font-size:20px}#debates .ar-side blockquote{font-size:11.5px}#debates .ar-vote{font-size:10px}#debates .ar__question{font-size:27px}}
+@media(prefers-reduced-motion:reduce) {#debates .ar-side,#debates .ar-topic,#debates .ar-topic>i,#debates .ar-vote,#debates .ar-vote__icon{transition:none}#debates .ar-side.is-picked{transform:none}}
+
+/* Readable small type on phone screens. */
+@media(max-width:620px){#debates .ar__position{font-size:8px;line-height:1.6}#debates .ar__picked{font-size:7px}#debates .ar__topic-label{font-size:9px}#debates .duel-question>span{font-size:8px}#debates .ar__challenge-label{font-size:8px}#debates .ar-side blockquote{font-size:12.5px;line-height:1.7}#debates .ar-vote{font-size:12px}}
+@media(max-width:360px){#debates .ar-side blockquote{font-size:12px}#debates .ar-vote{font-size:11px}}
+
+</style>
+<style id="discord-invitation-design">
+/* Clear value, one bold Discord invitation. Platform ink and ice only. */
+#beta.discord-invitation{--dc-ink:#07080C;--dc-muted:rgba(7,8,12,.62);--dc-paper:#fff;--dc-line:rgba(7,8,12,.10);--dc-accent:var(--brand-ink,#07080C);--dc-on:#DAE6F7;display:block;min-height:0;padding:85px 32px 65px!important;background:transparent!important;color:var(--dc-ink);overflow:hidden;isolation:isolate;scroll-margin-top:86px;font-family:var(--font-sans,'Manrope',sans-serif)}
+[data-theme="dark"] #beta.discord-invitation{--dc-ink:#F1F2F5;--dc-muted:rgba(241,242,245,.62);--dc-paper:#0E1017;--dc-line:rgba(217,228,255,.12);--dc-accent:var(--brand-ice,#DAE6F7);--dc-on:#07080C}
+#beta .dc-inner{width:min(1120px,100%);margin:0 auto}
+#beta .dc-mast{display:flex;align-items:center;justify-content:space-between;gap:20px;border-top:1px solid var(--dc-line);padding-top:23px;color:var(--dc-muted);font:600 9px/1.5 var(--font-tech,monospace);letter-spacing:.07em}
+#beta .dc-mast>span:first-child{display:flex;align-items:center;gap:13px;color:var(--dc-ink)}
+#beta .dc-mast b{font:500 21px/1 var(--font-tech,monospace);letter-spacing:-.05em}
+#beta .dc-layout{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(40px,7vw,95px);align-items:center;padding:56px 0 20px}
+#beta .dc-copy{min-width:0}
+#beta .dc-copy h2{font:800 clamp(48px,5.7vw,76px)/1.02 'Manrope',sans-serif;color:var(--dc-ink);letter-spacing:-.065em;text-transform:none;margin:0}
+#beta .dc-copy h2>span{color:var(--dc-ink);font:inherit;letter-spacing:inherit}
+#beta .dc-lede{margin:27px 0 0;color:var(--dc-muted);font:400 16px/1.7 'Manrope',sans-serif;letter-spacing:-.02em;max-width:37ch}
+#beta .dc-pass-wrap{min-width:0}
+#beta .dc-pass{display:block;background:var(--dc-paper);color:var(--dc-ink);border-radius:5px;box-shadow:0 18px 55px rgba(7,8,12,.045);overflow:hidden}
+#beta .dc-pass__main{min-width:0;padding-top:27px}
+#beta .dc-pass__brand{display:flex;align-items:center;gap:10px;margin:0 26px;padding-bottom:22px;border-bottom:1px solid var(--dc-line)}
+#beta .dc-pass__brand img{display:block;flex:none;width:38px;height:38px;object-fit:contain;border-radius:2px}
+#beta .dc-pass__brand>div{display:grid;gap:5px}
+#beta .dc-pass__brand b{color:var(--dc-ink);font:800 20px/1 'Manrope',sans-serif;letter-spacing:-.055em}
+#beta .dc-pass__brand div>span{color:var(--dc-muted);font:500 8px/1.5 var(--font-tech,monospace);letter-spacing:.07em}
+#beta .dc-pass__content{padding:7px 26px 0}
+#beta .dc-pass__updates{list-style:none;padding:0;margin:0}
+#beta .dc-pass__updates li{padding:13px 0;font:500 14px/1.5 'Manrope',sans-serif;letter-spacing:-.015em;color:var(--dc-ink)}
+#beta .dc-pass__updates li+li{border-top:1px solid var(--dc-line)}
+#beta .dc-pass__action{padding:17px 24px 26px}
+#beta .dc-join{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:20px;min-height:86px;background:var(--dc-accent);color:var(--dc-on);border:0;border-radius:3px;text-decoration:none;box-shadow:0 6px 17px rgba(7,8,12,.08);transition:transform .2s,box-shadow .2s}
+#beta .dc-join__text{display:block;min-width:0}
+#beta .dc-join__text>b{display:block;font:800 26px/1.15 'Manrope',sans-serif;letter-spacing:-.035em;color:inherit;white-space:nowrap}
+#beta .dc-join__arrow{font:34px/1 'Manrope',sans-serif;color:inherit;flex:none;transition:transform .2s}
+#beta .dc-join:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(7,8,12,.12)}
+#beta .dc-join:hover .dc-join__arrow{transform:translate(2px,-2px)}
+#beta .dc-join:focus-visible{outline:2px solid var(--dc-accent);outline-offset:5px}
+@media(max-width:900px){#beta .dc-layout{gap:40px}#beta .dc-copy h2{font-size:55px}#beta .dc-pass__brand{margin-left:22px;margin-right:22px}#beta .dc-pass__content{padding-left:22px;padding-right:22px}#beta .dc-pass__action{padding-left:20px;padding-right:20px}#beta .dc-join{padding:20px 18px;gap:10px}#beta .dc-join__text>b{font-size:22px}#beta .dc-join__arrow{font-size:28px}}
+@media(max-width:740px){
+#beta.discord-invitation{padding:43px 24px 42px!important}
+#beta .dc-mast{padding-top:18px;gap:12px;font-size:8px;letter-spacing:.04em}
+#beta .dc-mast b{font-size:19px}
+#beta .dc-mast>span:first-child{gap:9px}
+#beta .dc-mast>span:last-child{font-size:7px;text-align:right;max-width:16ch}
+#beta .dc-layout{grid-template-columns:minmax(0,1fr);padding:33px 0 0;gap:28px}
+#beta .dc-copy h2{font-size:clamp(43px,12.8vw,67px);line-height:1.02;letter-spacing:-.06em}
+#beta .dc-lede{font-size:13px;line-height:1.7;margin-top:19px;max-width:37ch}
+#beta .dc-pass-wrap{width:100%;max-width:440px;margin:0 auto}
+#beta .dc-pass__main{padding-top:23px}
+#beta .dc-pass__brand{margin:0 23px;padding-bottom:19px;gap:9px}
+#beta .dc-pass__brand img{width:34px;height:34px}
+#beta .dc-pass__brand b{font-size:20px}
+#beta .dc-pass__brand div>span{font-size:7px;letter-spacing:.04em}
+#beta .dc-pass__content{padding:6px 23px 0}
+#beta .dc-pass__updates li{padding:12px 0;font-size:13px;line-height:1.5}
+#beta .dc-pass__action{padding:16px 20px 23px}
+#beta .dc-join{min-height:84px;padding:20px 18px;gap:10px}
+#beta .dc-join__text>b{font-size:24px}
+#beta .dc-join__arrow{font-size:28px}
+}
+@media(max-width:360px){#beta.discord-invitation{padding-left:19px!important;padding-right:19px!important}#beta .dc-copy h2{font-size:44px}#beta .dc-pass__brand{margin-left:21px;margin-right:21px}#beta .dc-pass__content{padding-left:21px;padding-right:21px}#beta .dc-pass__action{padding-left:18px;padding-right:18px}#beta .dc-join{padding-left:16px;padding-right:16px;gap:8px}#beta .dc-join__text>b{font-size:22px}#beta .dc-join__arrow{font-size:26px}}
+@media(prefers-reduced-motion:reduce){#beta .dc-join,#beta .dc-join__arrow{transition:none}#beta .dc-join:hover{transform:none}#beta .dc-join:hover .dc-join__arrow{transform:none}}
+
+</style>
+    <style id="hero-qr-birds">
+        .hero__sky-scene {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 2;
+        }
+
+        .hero__ambient-glow {
+            position: absolute;
+            top: -20%;
+            right: -10%;
+            width: 85vw;
+            height: 110vh;
+            max-width: 1300px;
+            background: radial-gradient(ellipse 70% 60% at 75% 35%,
+                rgba(55, 92, 245, 0.32) 0%,
+                rgba(35, 55, 185, 0.16) 45%,
+                rgba(14, 20, 65, 0.04) 70%,
+                transparent 85%);
+            filter: blur(60px);
+            pointer-events: none;
+        }
+
+        [data-theme="light"] .hero__ambient-glow {
+            background: radial-gradient(ellipse 70% 60% at 75% 35%,
+                rgba(68, 110, 255, 0.18) 0%,
+                rgba(120, 160, 255, 0.08) 45%,
+                transparent 75%);
+        }
+
+        .birds-container {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+            perspective: 800px;
+            transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .bird {
+            position: absolute;
+            color: rgba(225, 238, 255, 0.92);
+            filter: drop-shadow(0 2px 8px rgba(96, 165, 250, 0.5));
+            will-change: transform;
+            pointer-events: none;
+        }
+
+        [data-theme="light"] .bird {
+            color: rgba(18, 30, 60, 0.85);
+            filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.15));
+        }
+
+        .bird svg {
+            width: 100%;
+            height: 100%;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2.2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            transform-origin: 50% 55%;
+        }
+
+        /* Natural wing flap cycles */
+        .bird--soar svg {
+            animation: bird-wing-soar 1.8s ease-in-out infinite;
+        }
+
+        .bird--fast svg {
+            animation: bird-wing-fast 0.65s ease-in-out infinite alternate;
+        }
+
+        .bird--steady svg {
+            animation: bird-wing-steady 0.9s ease-in-out infinite alternate;
+        }
+
+        /* 8 Birds in Depth and Staggered Formations */
+        .bird--1 {
+            width: 26px;
+            height: 16px;
+            top: 22%;
+            animation: bird-fly-flock 22s cubic-bezier(0.25, 1, 0.5, 1) infinite;
+            animation-delay: 0s;
+            z-index: 5;
+        }
+
+        .bird--2 {
+            width: 22px;
+            height: 14px;
+            top: 28%;
+            animation: bird-fly-flock 24s cubic-bezier(0.25, 1, 0.5, 1) infinite;
+            animation-delay: -3.5s;
+            opacity: 0.85;
+            z-index: 4;
+        }
+
+        .bird--3 {
+            width: 20px;
+            height: 13px;
+            top: 17%;
+            animation: bird-fly-flock 23s cubic-bezier(0.25, 1, 0.5, 1) infinite;
+            animation-delay: -5s;
+            opacity: 0.8;
+            z-index: 4;
+        }
+
+        .bird--4 {
+            width: 16px;
+            height: 10px;
+            top: 34%;
+            animation: bird-fly-flock 27s linear infinite;
+            animation-delay: -9s;
+            opacity: 0.65;
+            filter: blur(0.3px) drop-shadow(0 2px 6px rgba(96, 165, 250, 0.3));
+            z-index: 3;
+        }
+
+        .bird--5 {
+            width: 13px;
+            height: 8px;
+            top: 10%;
+            animation: bird-fly-flock 32s linear infinite;
+            animation-delay: -16s;
+            opacity: 0.5;
+            filter: blur(0.5px);
+            z-index: 2;
+        }
+
+        .bird--6 {
+            width: 18px;
+            height: 11px;
+            top: 31%;
+            animation: bird-fly-flock 25s cubic-bezier(0.25, 1, 0.5, 1) infinite;
+            animation-delay: -7s;
+            opacity: 0.75;
+            z-index: 4;
+        }
+
+        .bird--7 {
+            width: 24px;
+            height: 15px;
+            top: 15%;
+            animation: bird-fly-reverse 26s cubic-bezier(0.25, 1, 0.5, 1) infinite;
+            animation-delay: -11s;
+            opacity: 0.85;
+            z-index: 5;
+        }
+
+        .bird--8 {
+            width: 15px;
+            height: 9px;
+            top: 38%;
+            animation: bird-fly-reverse 34s linear infinite;
+            animation-delay: -4s;
+            opacity: 0.55;
+            filter: blur(0.4px);
+            z-index: 2;
+        }
+
+        /* Flight Trajectories across Hero */
+        @keyframes bird-fly-flock {
+            0% {
+                transform: translate3d(-80px, 35px, 0) rotate(5deg);
+                opacity: 0;
+            }
+            8% {
+                opacity: 0.95;
+            }
+            35% {
+                transform: translate3d(35vw, -15px, 0) rotate(1deg);
+            }
+            70% {
+                transform: translate3d(70vw, -45px, 0) rotate(-2deg);
+            }
+            92% {
+                opacity: 0.95;
+            }
+            100% {
+                transform: translate3d(calc(100vw + 90px), -70px, 0) rotate(-3deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes bird-fly-reverse {
+            0% {
+                transform: translate3d(calc(100vw + 80px), -20px, 0) scaleX(-1) rotate(4deg);
+                opacity: 0;
+            }
+            8% {
+                opacity: 0.9;
+            }
+            45% {
+                transform: translate3d(55vw, 15px, 0) scaleX(-1) rotate(-1deg);
+            }
+            80% {
+                transform: translate3d(20vw, 35px, 0) scaleX(-1) rotate(2deg);
+            }
+            92% {
+                opacity: 0.9;
+            }
+            100% {
+                transform: translate3d(-100px, 45px, 0) scaleX(-1) rotate(0deg);
+                opacity: 0;
+            }
+        }
+
+        /* Wing flap cycles */
+        @keyframes bird-wing-fast {
+            0% {
+                transform: scaleY(-0.35) translateY(2px);
+            }
+            45% {
+                transform: scaleY(0.4);
+            }
+            100% {
+                transform: scaleY(1.15) translateY(-2px);
+            }
+        }
+
+        @keyframes bird-wing-steady {
+            0% {
+                transform: scaleY(-0.25) translateY(1.5px);
+            }
+            40% {
+                transform: scaleY(0.4);
+            }
+            100% {
+                transform: scaleY(1.1) translateY(-1.5px);
+            }
+        }
+
+        @keyframes bird-wing-soar {
+            0% {
+                transform: scaleY(0.75);
+            }
+            18% {
+                transform: scaleY(0.9);
+            }
+            32% {
+                transform: scaleY(-0.3) translateY(1.5px);
+            }
+            52% {
+                transform: scaleY(1.15) translateY(-2px);
+            }
+            70% {
+                transform: scaleY(0.8);
+            }
+            100% {
+                transform: scaleY(0.75);
+            }
+        }
+        /* Full-size QR: readable immediately, including on touchscreens. */
+        #hero .hero__qr-wrap { display: inline-flex; max-width: 100%; }
+        #hero .hero__qr-cta { display: flex; align-items: center; gap: 18px; padding: 10px 20px 10px 10px; max-width: 100%; height: auto; min-height: 134px; color: var(--text-primary); background: rgba(255,255,255,.85); border: 1px solid rgba(7,8,12,.12); border-radius: 16px; text-decoration: none; box-shadow: 0 8px 28px rgba(7,8,12,.04); transition: border-color .2s ease, background-color .2s ease; }
+        #hero .hero__qr-cta:hover { background: #fff; border-color: rgba(7,8,12,.3); }
+        #hero .hero__qr-cta:focus-visible { outline: 2px solid currentColor; outline-offset: 5px; }
+        #hero .hero__qr-frame { display: block; flex: 0 0 112px; width: 112px; height: 112px; padding: 0; background: #fff; border-radius: 8px; }
+        #hero .hero__qr-frame img { display: block; width: 112px; height: 112px; border-radius: 8px; }
+        #hero .hero__qr-copy { display: flex; flex-direction: column; gap: 8px; text-align: left; }
+        #hero .hero__qr-title { font: 700 15px/1.2 var(--font-sans,sans-serif); letter-spacing: -.02em; }
+        #hero .hero__qr-note { max-width: 18ch; font: 500 12px/1.5 var(--font-sans,sans-serif); color: var(--text-secondary); }
+        #hero .hero__qr-url { font: 500 10px/1.4 var(--font-tech,monospace); color: var(--text-secondary); }
+        [data-theme="dark"] #hero .hero__qr-cta { background: #14171e; border-color: rgba(218,230,247,.18); }
+        [data-theme="dark"] #hero .hero__qr-cta:hover { background: #1b202a; border-color: rgba(218,230,247,.45); }
+        #hero .hero__sky-scene { z-index: 0; }
+        #hero .bird { left: 0; color: rgba(18,30,60,.55); filter: none; }
+        [data-theme="dark"] #hero .bird { color: rgba(218,230,247,.65); }
+        #hero .bird--1 { width: 34px; height: 22px; }
+        #hero .bird--7 { width: 30px; height: 20px; }
+        #hero:not(.sky-active) .bird,
+        #hero:not(.sky-active) .bird svg { animation-play-state: paused; }
+        @media (max-width: 600px) {
+            #hero .bird:nth-child(n+5) { display: none; }
+            #hero .hero__qr-cta { padding-right: 14px; gap: 12px; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            #hero .birds-container { display: none; }
+            #hero .hero__qr-cta { transition: none; }
+        }
+
+    </style>
+    <style id="arena-editorial-refresh">
+/* Arena: a readable editorial heading and a stable topic selector. */
+#debates .arena__header {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    align-items: center;
+    gap: clamp(32px, 5vw, 72px);
+    margin: 32px 0 28px;
+    padding: clamp(28px, 4vw, 48px);
+    border: 1px solid var(--duel-line, var(--border));
+    border-radius: 28px;
+    background: var(--duel-paper, rgba(255,255,255,.78));
+}
+#debates .arena__title {
+    width: auto;
+    min-width: 0;
+    margin: 0;
+    font: 800 clamp(64px, 6.8vw, 96px)/.98 'Manrope', sans-serif;
+    letter-spacing: -.065em;
+    color: var(--duel-ink, var(--text-primary));
+}
+#debates .arena__title > span { display: block; }
+#debates .arena__title em {
+    display: block;
+    margin-top: 2px;
+    color: inherit;
+    font: italic 400 1.2em/.98 'Instrument Serif', Georgia, serif;
+    letter-spacing: -.035em;
+}
+#debates .arena__intro { padding: 0; min-width: 0; }
+#debates .arena__eyebrow {
+    display: block;
+    font: 600 10px/1.5 var(--font-tech, monospace);
+    letter-spacing: .09em;
+    color: var(--duel-muted, var(--text-secondary));
+}
+#debates .arena__intro .arena__intro-lead {
+    margin: 18px 0 14px;
+    max-width: 25ch;
+    font: 650 clamp(22px, 2.3vw, 30px)/1.25 'Manrope', sans-serif;
+    letter-spacing: -.035em;
+    color: var(--duel-ink, var(--text-primary));
+}
+#debates .arena__intro .arena__instruction {
+    display: block;
+    max-width: 31ch;
+    margin: 0;
+    font: 400 14px/1.7 'Manrope', sans-serif;
+    letter-spacing: 0;
+    color: var(--duel-muted, var(--text-secondary));
+}
+#debates .ar__topic-row { border-top: 0; padding-top: 0; gap: 24px; }
+#debates .ar__topic-label { font-size: 10px; letter-spacing: .05em; }
+#debates .ar__topics {
+    gap: 4px;
+    padding: 5px;
+    border: 1px solid var(--duel-line, var(--border));
+    border-radius: 16px;
+    background: var(--duel-tint, var(--surface-2));
+}
+#debates .ar-topic {
+    justify-content: center;
+    gap: 8px;
+    min-height: 46px;
+    padding: 10px 12px;
+    border: 0;
+    border-radius: 11px;
+    font: 550 13px/1.4 'Manrope', sans-serif;
+    color: var(--duel-muted, var(--text-secondary));
+    transition: background .2s ease, color .2s ease;
+}
+#debates .ar-topic > i { display: none; }
+#debates .ar-topic > span { font-size: 9px; }
+#debates .ar-topic:hover { background: var(--duel-paper, var(--surface)); }
+#debates .ar-topic[aria-pressed="true"] {
+    border: 0;
+    background: var(--duel-ink, var(--text-primary));
+    color: var(--duel-paper, var(--bg-main));
+}
+#debates .duel-question { padding: 30px 0 24px; }
+#debates .duel-question > span { font-size: 10px; letter-spacing: .06em; }
+#debates .ar__question {
+    font: 650 clamp(26px, 3vw, 36px)/1.18 'Manrope', sans-serif;
+    letter-spacing: -.04em;
+}
+#debates .ar-side h3 {
+    font: 700 clamp(27px, 3vw, 38px)/1.1 'Manrope', sans-serif;
+    letter-spacing: -.035em;
+}
+#debates .ar-side blockquote { font: 400 14px/1.75 'Manrope', sans-serif; }
+@media (max-width: 800px) {
+    #debates .arena__header { gap: 28px; padding: 30px; }
+    #debates .arena__title { font-size: clamp(52px, 8vw, 68px); }
+    #debates .arena__intro .arena__intro-lead { font-size: 22px; }
+}
+@media (max-width: 600px) {
+    #debates .arena__header { grid-template-columns: minmax(0,1fr); padding: 26px; margin: 26px 0 24px; gap: 28px; border-radius: 22px; }
+    #debates .arena__title { font-size: clamp(52px, 13vw, 74px); letter-spacing: -.055em; }
+    #debates .arena__intro { border-top: 1px solid var(--duel-line, var(--border)); padding-top: 22px; }
+    #debates .arena__intro .arena__intro-lead { margin-top: 12px; font-size: 24px; }
+    #debates .arena__intro .arena__intro-lead br { display: block; }
+    #debates .arena__intro .arena__instruction { font-size: 13px; max-width: 34ch; }
+    #debates .ar__topic-row { display: flex; flex-direction: column; align-items: stretch; gap: 12px; }
+    #debates .ar__topics { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); }
+    #debates .ar-topic { padding-inline: 5px; font-size: 12px; }
+    #debates .ar-topic > span { display: none; }
+    #debates .ar__question { font-size: 26px; }
+}
+@media (prefers-reduced-motion: reduce) {
+    #debates .ar-topic { transition: none; }
+}
+    </style>
+</head>
+
+<body>
+
+    <!-- Page backdrop: brand light down the page, aurora along the edges of
+         the viewport and a grain tile, so the page is not a single flat sheet
+         from top to bottom. No lines, no cells. -->
+    <div class="page-fx" aria-hidden="true">
+        <span class="page-fx__glow"></span>
+        <span class="page-fx__aurora">
+            <span class="page-fx__ribbon page-fx__ribbon--l"></span>
+            <span class="page-fx__ribbon page-fx__ribbon--r"></span>
+        </span>
+        <span class="page-fx__grain"></span>
+    </div>
+
+
+    <!-- Ambient glow effects -->
+    <div class="ambient-glow ambient-glow--1"></div>
+    <div class="ambient-glow ambient-glow--2"></div>
+    <div class="ambient-glow ambient-glow--3"></div>
+    <div class="grid-overlay"></div>
+    <canvas id="particleCanvas" class="particle-canvas"></canvas>
+    <div class="floating-orbs">
+        <div class="floating-orb floating-orb--1"></div>
+        <div class="floating-orb floating-orb--2"></div>
+        <div class="floating-orb floating-orb--3"></div>
+        <div class="floating-orb floating-orb--4"></div>
+    </div>
+
+
+    <!-- Left Sidebar Navigation -->
+    <!-- The icon rail is gone: the MENU overlay above is the only navigation. -->
+
+    <!-- Fixed brand mark; balances the MENU trigger now that the icon rail is gone. -->
+    <div class="curiosity-topbar" aria-hidden="true"></div>
+    <a class="brandmark" href="#hero" aria-label="Datariot — back to top">
+        <img class="brandmark__logo" src="assets/datariot-mark.jpg?v=brand-20261021" alt="" aria-hidden="true" width="40" height="40" decoding="async">
+        <span class="brandmark__word">datariot</span>
+    </a>
+
+    <!-- Menu trigger. One control at every width — the overlay below is the
+         same menu on a phone and on a desktop. -->
+    <button class="navx-trigger" id="navTrigger" aria-label="Open menu" aria-expanded="false" aria-controls="navOverlay">
+        <span class="navx-trigger__bars" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span class="navx-trigger__label" data-open="MENU" data-close="CLOSE">MENU</span>
+    </button>
+
+    <!-- Full-screen navigation -->
+    <div class="navx" id="navOverlay" role="dialog" aria-modal="true" aria-label="Site navigation">
+        <div class="navx__scrim" data-navx-close></div>
+
+        <div class="navx__panel">
+            <div class="navx__light" aria-hidden="true"></div>
+
+            <div class="navx__bar">
+                <span class="navx__brand">
+                    <span class="navx__brand-mark"><img src="assets/logo.jpg?v=brand-20261021" alt="" width="26" height="26" style="display:block;width:100%;height:100%;object-fit:contain"></span>
+                    DATARIOT
+                    <em>v0.1 BETA</em>
+                </span>
+                <span class="navx__status">
+                    <i aria-hidden="true"></i>
+                    NAVIGATION
+                </span>
+            </div>
+
+            <div class="navx__body">
+                <nav class="navx__nav">
+                    <a class="navx__item" href="#hero" data-navx-link data-section="hero">
+                        <span class="navx__item-num">00</span>
+                        <span class="navx__item-text">Home</span>
+                        <span class="navx__item-arrow" aria-hidden="true"></span>
+                    </a>
+                    <a class="navx__item" href="#manifesto" data-navx-link data-section="manifesto">
+                        <span class="navx__item-num">01</span>
+                        <span class="navx__item-text">The feed</span>
+                        <span class="navx__item-arrow" aria-hidden="true"></span>
+                    </a>
+                    <a class="navx__item" href="#features" data-navx-link data-section="features">
+                        <span class="navx__item-num">02</span>
+                        <span class="navx__item-text">How it works</span>
+                        <span class="navx__item-arrow" aria-hidden="true"></span>
+                    </a>
+                    <a class="navx__item" href="#debates" data-navx-link data-section="debates">
+                        <span class="navx__item-num">03</span>
+                        <span class="navx__item-text">The arena</span>
+                        <span class="navx__item-arrow" aria-hidden="true"></span>
+                    </a>
+                    <a class="navx__item" href="#ai-core" data-navx-link data-section="ai-core">
+                        <span class="navx__item-num">04</span>
+                        <span class="navx__item-text">Orvelis AI</span>
+                        <span class="navx__item-arrow" aria-hidden="true"></span>
+                    </a>
+                    <a class="navx__item" href="#global" data-navx-link data-section="global">
+                        <span class="navx__item-num">05</span>
+                        <span class="navx__item-text">Global network</span>
+                        <span class="navx__item-arrow" aria-hidden="true"></span>
+                    </a>
+                    <a class="navx__item" href="#beta" data-navx-link data-section="beta">
+                        <span class="navx__item-num">06</span>
+                        <span class="navx__item-text">Discord</span>
+                        <span class="navx__item-arrow" aria-hidden="true"></span>
+                    </a>
+                    <a class="navx__item" href="#faq" data-navx-link data-section="faq">
+                        <span class="navx__item-num">07</span>
+                        <span class="navx__item-text">FAQ</span>
+                        <span class="navx__item-arrow" aria-hidden="true"></span>
+                    </a>
+                </nav>
+
+                <aside class="navx__side">
+                    <div class="navx__side-block">
+                        <span class="navx__side-tag">[ WHAT THIS IS ]</span>
+                        <p>A short-video app where every clip has a point. Watch a minute, keep
+                            something useful, answer back on camera.</p>
+                    </div>
+
+                    <div class="navx__side-block">
+                        <span class="navx__side-tag">[ APPEARANCE ]</span>
+                        <button class="navx__theme" id="navxTheme" type="button">
+                            <span class="navx__theme-icon" aria-hidden="true">
+                                <svg class="navx__theme-moon" viewBox="0 0 18 18" fill="none">
+                                    <path d="M15.5 9.5C14.5 13 11.5 15.5 8 15.5C4 15.5 1 12.5 1 8.5C1 5 3.5 2 7 1C5.5 3 5.5 6.5 7.5 9C9.5 11.5 13 12 15.5 9.5Z" stroke="currentColor" stroke-width="1.3" />
+                                </svg>
+                                <svg class="navx__theme-sun" viewBox="0 0 18 18" fill="none">
+                                    <circle cx="9" cy="9" r="4" stroke="currentColor" stroke-width="1.3" />
+                                    <path d="M9 1V3M9 15V17M1 9H3M15 9H17M3.5 3.5L5 5M13 13L14.5 14.5M14.5 3.5L13 5M5 13L3.5 14.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" />
+                                </svg>
+                            </span>
+                            <span class="navx__theme-label">SWITCH THEME</span>
+                        </button>
+                    </div>
+
+                    <a class="navx__cta" href="#beta" data-navx-link>
+                        GET EARLY ACCESS
+                        <span aria-hidden="true"></span>
+                    </a>
+
+                    <div class="navx__side-foot">
+                        <a href="privacy.html">Privacy</a>
+                        <a href="terms.html">Terms</a>
+                        <a href="cookies.html">Cookies</a>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </div>
+    <script>
+        /* The menu binds here, inline and immediately after its own markup.
+           It used to live in script.js, which meant one blocked CDN, one
+           earlier throw or one stale cached bundle took the navigation with
+           it. Nothing below depends on anything else on the page. */
+        (function () {
+            var overlay = document.getElementById('navOverlay');
+            var trigger = document.getElementById('navTrigger');
+            if (!overlay || !trigger) return;
+
+            var root = document.documentElement;
+            var label = trigger.querySelector('.navx-trigger__label');
+            var lastFocus = null;
+
+            function isOpen() { return overlay.classList.contains('is-open'); }
+
+            function setState(open) {
+                overlay.classList.toggle('is-open', open);
+                trigger.classList.toggle('is-active', open);
+                root.classList.toggle('navx-open', open);
+                trigger.setAttribute('aria-expanded', open ? 'true' : 'false');
+                trigger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+                if (label) label.textContent = (open ? label.getAttribute('data-close') : label.getAttribute('data-open')) || 'MENU';
+                document.body.style.overflow = open ? 'hidden' : '';
+                if (window.FXBudget) { open ? window.FXBudget.pause() : window.FXBudget.resume(); }
+            }
+
+            function open() {
+                if (isOpen()) return;
+                lastFocus = document.activeElement;
+                setState(true);
+                var first = overlay.querySelector('[data-navx-link]');
+                if (first) { try { first.focus({ preventScroll: true }); } catch (e) { } }
+            }
+
+            function close() {
+                if (!isOpen()) return;
+                setState(false);
+                if (lastFocus) { try { lastFocus.focus({ preventScroll: true }); } catch (e) { } }
+            }
+
+            trigger.addEventListener('click', function (e) {
+                e.preventDefault();
+                isOpen() ? close() : open();
+            });
+
+            var closers = overlay.querySelectorAll('[data-navx-close]');
+            for (var i = 0; i < closers.length; i++) {
+                closers[i].addEventListener('click', function (e) { e.preventDefault(); close(); });
+            }
+
+            var links = overlay.querySelectorAll('[data-navx-link]');
+            for (var j = 0; j < links.length; j++) {
+                links[j].addEventListener('click', function (e) {
+                    var id = (this.getAttribute('href') || '').replace('#', '');
+                    var target = id && document.getElementById(id);
+                    close();
+                    if (target) {
+                        e.preventDefault();
+                        setTimeout(function () { target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 220);
+                    }
+                });
+            }
+
+            var themeBtn = document.getElementById('navxTheme');
+            if (themeBtn) {
+                themeBtn.addEventListener('click', function () {
+                    if (typeof window.toggleTheme === 'function') window.toggleTheme();
+                });
+            }
+
+            document.addEventListener('keydown', function (e) {
+                if (!isOpen()) return;
+                if (e.key === 'Escape') { close(); return; }
+                if (e.key !== 'Tab') return;
+                var items = [trigger].concat([].slice.call(overlay.querySelectorAll('a[href], button:not([disabled])')));
+                var first = items[0];
+                var last = items[items.length - 1];
+                if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+                else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+            });
+
+            window.closeOverlayNav = close;
+            // one line so a failure is diagnosable from the console
+            console.log('Datariot menu: ready');
+        })();
+
+        // App buttons soon effect
+        function showSoon(btn) {
+            btn.classList.add('show-soon');
+            setTimeout(() => {
+                btn.classList.remove('show-soon');
+            }, 2000);
+        }
+    </script>
+
+
+
+    <!-- Main Content -->
+    <main class="main">
+        <!-- HERO SECTION -->
+        <section class="section section--hero hero--shimmer" id="hero" data-inview>
+            <div class="hero__sky-scene" id="heroSkyScene" aria-hidden="true">
+                <div class="hero__ambient-glow"></div>
+                <div class="birds-container">
+                    <div class="bird bird--1 bird--soar"><svg viewBox="0 0 28 18"><path d="M2 13 C6 6, 11 6, 14 10 C17 6, 22 6, 26 13" /></svg></div>
+                    <div class="bird bird--2 bird--fast"><svg viewBox="0 0 28 18"><path d="M2 13 C6 6, 11 6, 14 10 C17 6, 22 6, 26 13" /></svg></div>
+                    <div class="bird bird--3 bird--steady"><svg viewBox="0 0 28 18"><path d="M2 13 C6 6, 11 6, 14 10 C17 6, 22 6, 26 13" /></svg></div>
+                    <div class="bird bird--4 bird--soar"><svg viewBox="0 0 28 18"><path d="M2 13 C6 6, 11 6, 14 10 C17 6, 22 6, 26 13" /></svg></div>
+                    <div class="bird bird--5 bird--steady"><svg viewBox="0 0 28 18"><path d="M2 13 C6 6, 11 6, 14 10 C17 6, 22 6, 26 13" /></svg></div>
+                    <div class="bird bird--6 bird--fast"><svg viewBox="0 0 28 18"><path d="M2 13 C6 6, 11 6, 14 10 C17 6, 22 6, 26 13" /></svg></div>
+                    <div class="bird bird--7 bird--soar"><svg viewBox="0 0 28 18"><path d="M2 13 C6 6, 11 6, 14 10 C17 6, 22 6, 26 13" /></svg></div>
+                    <div class="bird bird--8 bird--steady"><svg viewBox="0 0 28 18"><path d="M2 13 C6 6, 11 6, 14 10 C17 6, 22 6, 26 13" /></svg></div>
+                </div>
+            </div>
+
+
+            <div class="hero__background-layer">
+                <div id="canvas-3d-hero"></div>
+                <!-- Geex-Style Spinning Elements -->
+                <div class="abstract-spin abstract-spin--1">
+                    <svg viewBox="0 0 200 200">
+                        <circle cx="100" cy="100" r="90" fill="none" stroke="var(--blue-1)" stroke-width="1.5"
+                            stroke-dasharray="2 6" />
+                        <circle cx="100" cy="100" r="70" fill="none" stroke="var(--blue-2)" stroke-width="1.5"
+                            stroke-dasharray="4 8" />
+                        <circle cx="100" cy="100" r="50" fill="none" stroke="var(--accent)" stroke-width="1" />
+                    </svg>
+                </div>
+                <div class="abstract-spin abstract-spin--2">
+                    <svg viewBox="0 0 100 100" style="overflow: visible;">
+                        <defs>
+                            <path id="textCircle" d="M 50, 50 m -40, 0 a 40,40 0 1,1 80,0 a 40,40 0 1,1 -80,0" />
+                        </defs>
+                        <text font-size="11" font-family="'JetBrains Mono', monospace" font-weight="600" fill="currentColor"
+                            opacity="0.6">
+                            <textPath href="#textCircle" startOffset="0%">
+                                DATARIOT • SHORT VIDEO • CREATIVE FREEDOM • ARENA •
+                            </textPath>
+                        </text>
+                    </svg>
+                </div>
+                <div class="hero__shimmer-bg"></div>
+                <div class="hero__shimmer-overlay"></div>
+            </div>
+
+            <div class="hero__main-layout">
+                <div class="hero__content hero__content--left">
+                    <div class="hx-brand">
+                        <b><i aria-hidden="true">D</i>DATARIOT</b>
+                        <span>SHORT-FORM VIDEO&nbsp;&nbsp;//&nbsp;&nbsp;V0.1 BETA</span>
+                    </div>
+                    <h1 class="hx-title">Short videos<br>with <span class="hx-mark">a point.</span></h1>
+                    <p class="hero__lede">
+                        Discover a useful idea in every short video. <strong>Explore the reasoning
+                        with Orvelis AI, then add your perspective with a video reply.</strong>
+                    </p>
+                    <div class="hx-cta">
+                        <a class="hx-join" href="#beta">Join our Discord
+                            <svg viewBox="0 0 9 6" shape-rendering="crispEdges" aria-hidden="true"><path fill="currentColor" d="M6 0h1v6h-1zM7 1h1v4h-1zM0 2h6v2h-6zM8 2h1v2h-1z"/></svg>
+                        </a>
+                        <div class="hero__qr-wrap">
+                            <a class="hero__qr-cta" href="https://datariot.xyz/" aria-label="Open Datariot, or scan the QR code on your phone">
+                                <span class="hero__qr-frame">
+                                    <img src="assets/app-qr.svg" alt="QR code to open datariot.xyz" width="112" height="112" />
+                                </span>
+                                <div class="hero__qr-copy">
+                                    <b class="hero__qr-title">Take Datariot with you</b>
+                                    <span class="hero__qr-note">Scan with your camera to open the app.</span>
+                                    <span class="hero__qr-url">datariot.xyz ↗</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero__phone-showcase" id="heroPhone" data-inview>
+                    <span class="hero__phone-glow" aria-hidden="true"></span>
+
+                    <!-- real screens from the app, fanned out behind the phone -->
+                    <div class="hero__clip-stack" aria-hidden="true">
+                        <span class="hero__clip-stack-card hero__clip-stack-card--1"><img src="assets/smart-feed-real.jpg" alt="" loading="lazy" decoding="async"></span>
+                        <span class="hero__clip-stack-card hero__clip-stack-card--2"><img src="assets/debate-threads-real.jpg" alt="" loading="lazy" decoding="async"></span>
+                        <span class="hero__clip-stack-card hero__clip-stack-card--3"><img src="assets/creator-dna-real.jpg" alt="" loading="lazy" decoding="async"></span>
+                    </div>
+
+                    <div class="hero__swipe" aria-hidden="true">
+                        <svg viewBox="0 0 28 44" fill="none">
+                            <path d="M6 20l8-8 8 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M6 32l8-8 8 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <span>SWIPE FOR THE NEXT POINT</span>
+                    </div>
+
+                    <div class="hero__phone-frame">
+                        <div class="phone__notch"></div>
+                        <div class="phone__screen">
+                            <!-- the clip is cut from the app's own screen recording; clips.js
+                                 keeps the counters, the reactions and the ambient light going -->
+                            <div class="hx-app" id="heroApp" role="img"
+                                aria-label="The Datariot app playing a short video by @Fronda: Should we prioritize logic over emotion in the discussion?">
+                                <div class="hx-app__amb-img" style="background-image: url('assets/hero-clip.jpg')"></div>
+                                <canvas class="hx-app__amb" width="24" height="46"></canvas>
+                                <div class="hx-app__top">
+                                    <div class="hx-app__status"><b>9:41</b><i></i></div>
+                                    <div class="hx-app__tabs"><span>ARENA</span><span class="is-on">FEED</span><span>CIRCLE</span></div>
+                                </div>
+                                <div class="hx-app__clip">
+                                    <video class="hx-app__video" autoplay loop muted playsinline preload="auto" poster="assets/hero-clip.jpg">
+                                        <source src="assets/hero-clip.webm" type="video/webm">
+                                        <source src="assets/hero-clip.mp4" type="video/mp4">
+                                    </video>
+                                    <span class="hx-app__who"><i></i>@Fronda</span>
+                                    <span class="hx-app__pop"><svg viewBox="0 0 24 24"><path d="M12 1.8c.8 5.6 3.6 8.4 9.2 9.2-5.6.8-8.4 3.6-9.2 9.2-.8-5.6-3.6-8.4-9.2-9.2 5.6-.8 8.4-3.6 9.2-9.2z"/></svg></span>
+                                </div>
+                                <div class="hx-app__under">
+                                    <p class="hx-app__cap">Should we prioritize logic over emotion in the dis… <b>more</b></p>
+                                    <div class="hx-app__row">
+                                        <span class="hx-app__act hx-app__act--like"><svg viewBox="0 0 24 24"><path d="M12 1.8c.8 5.6 3.6 8.4 9.2 9.2-5.6.8-8.4 3.6-9.2 9.2-.8-5.6-3.6-8.4-9.2-9.2 5.6-.8 8.4-3.6 9.2-9.2z"/></svg><i>Like</i><b data-count="like">3,128</b></span>
+                                        <span class="hx-app__act"><svg viewBox="0 0 24 24"><path d="M12 3.2c5 0 9 3.4 9 7.7s-4 7.7-9 7.7c-1 0-2-.1-2.9-.4L4.6 20.4l1.2-3.9C4 15.1 3 13.1 3 10.9c0-4.3 4-7.7 9-7.7z"/></svg><i>Comment</i><b data-count="comment">842</b></span>
+                                        <span class="hx-app__act"><svg viewBox="0 0 24 24"><path d="M6.2 3.2h11.6v17.6L12 16.8l-5.8 4z"/></svg><i>Save</i><b>219</b></span>
+                                        <span class="hx-app__input"><em data-typing>Add a comment...</em><span class="hx-app__send"><svg viewBox="0 0 24 24"><path d="M12 19V6M6.5 11.5 12 6l5.5 5.5"/></svg></span></span>
+                                    </div>
+                                    <div class="hx-app__time"><span class="hx-app__bar"><i></i></span><b data-time>0:00 / 0:14</b></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="scroll-indicator">
+                <div class="scroll-indicator__line"></div>
+            </div>
+        </section>
+
+
+        <!-- ============================================================
+             01 — THE FEED: tap a question, the phone plays that clip, the
+             point lands. clips.js runs it: the clips take turns while the
+             slide is on screen, and a hover or a tap takes over. Without
+             script the first clip sits on the phone and every point is
+             written out below. The frames are real ones from the app.
+             ============================================================ -->
+        <section class="section feedsec" id="manifesto" data-inview>
+            <div class="feedsec__inner">
+                <div class="feedsec__eyebrow">
+                    <span>[ 01 — THE FEED ]</span>
+                    <span class="feedsec__rule"></span>
+                </div>
+                <div class="feedsec__head">
+                    <h2 class="feedsec__title">Tap a clip.<br>Get <span class="hx-mark">the point.</span></h2>
+                    <p class="feedsec__lede">
+                        Datariot is a feed of short videos that each make one clear point in under
+                        a minute. Pick a question and watch one.
+                    </p>
+                </div>
+
+                <div class="fd" id="feedDemo">
+                    <div class="fd__phone" aria-hidden="true">
+                        <span class="fd__notch"></span>
+                        <div class="fd__screen">
+                            <!-- the app around the feed, drawn as the hero's phone is: the
+                                 status bar and the tabs stay put while the clips move under them -->
+                            <div class="fd__top">
+                                <div class="fd__status"><b>9:41</b><i></i></div>
+                                <div class="fd__tabs"><span>ARENA</span><span class="is-on">FEED</span><span>CIRCLE</span></div>
+                            </div>
+
+                            <figure class="fd__clip is-on">
+                                <span class="fd__amb" style="background-image:url('assets/reel-bear-amb.jpg')"></span>
+                                <div class="fd__media">
+                                    <img class="fd__pic" src="assets/reel-bear.jpg" alt="" width="464" height="238" decoding="async">
+                                    <span class="fd__who"><i></i>@Fronda</span>
+                                </div>
+                                <div class="fd__under">
+                                    <p class="fd__cap">Polar bears aren’t actually white. Here’s what you’re… <b>more</b></p>
+                                    <div class="fd__row">
+                                        <span class="fd__act fd__act--like"><svg viewBox="0 0 24 24"><path d="M12 1.8c.8 5.6 3.6 8.4 9.2 9.2-5.6.8-8.4 3.6-9.2 9.2-.8-5.6-3.6-8.4-9.2-9.2 5.6-.8 8.4-3.6 9.2-9.2z"/></svg><i>Like</i><b>2,406</b></span>
+                                        <span class="fd__act"><svg viewBox="0 0 24 24"><path d="M12 3.2c5 0 9 3.4 9 7.7s-4 7.7-9 7.7c-1 0-2-.1-2.9-.4L4.6 20.4l1.2-3.9C4 15.1 3 13.1 3 10.9c0-4.3 4-7.7 9-7.7z"/></svg><i>Comment</i><b>311</b></span>
+                                        <span class="fd__act"><svg viewBox="0 0 24 24"><path d="M6.2 3.2h11.6v17.6L12 16.8l-5.8 4z"/></svg><i>Save</i><b>187</b></span>
+                                        <span class="fd__input"><em>Add a comment...</em><span class="fd__send"><svg viewBox="0 0 24 24"><path d="M12 19V6M6.5 11.5 12 6l5.5 5.5"/></svg></span></span>
+                                    </div>
+                                    <div class="fd__time"><span class="fd__prog"><i></i><span class="fd__knob"></span></span><b data-len="31">0:09 / 0:31</b></div>
+                                </div>
+                            </figure>
+
+                            <figure class="fd__clip">
+                                <span class="fd__amb" style="background-image:url('assets/reel-lidar-amb.jpg')"></span>
+                                <div class="fd__media">
+                                    <img class="fd__pic" src="assets/reel-lidar.jpg" alt="" width="464" height="250" decoding="async">
+                                    <span class="fd__who"><i></i>@Fara</span>
+                                </div>
+                                <div class="fd__under">
+                                    <p class="fd__cap">How lidar sees the street: one laser, one clock and… <b>more</b></p>
+                                    <div class="fd__row">
+                                        <span class="fd__act fd__act--like"><svg viewBox="0 0 24 24"><path d="M12 1.8c.8 5.6 3.6 8.4 9.2 9.2-5.6.8-8.4 3.6-9.2 9.2-.8-5.6-3.6-8.4-9.2-9.2 5.6-.8 8.4-3.6 9.2-9.2z"/></svg><i>Like</i><b>1,874</b></span>
+                                        <span class="fd__act"><svg viewBox="0 0 24 24"><path d="M12 3.2c5 0 9 3.4 9 7.7s-4 7.7-9 7.7c-1 0-2-.1-2.9-.4L4.6 20.4l1.2-3.9C4 15.1 3 13.1 3 10.9c0-4.3 4-7.7 9-7.7z"/></svg><i>Comment</i><b>129</b></span>
+                                        <span class="fd__act"><svg viewBox="0 0 24 24"><path d="M6.2 3.2h11.6v17.6L12 16.8l-5.8 4z"/></svg><i>Save</i><b>402</b></span>
+                                        <span class="fd__input"><em>Add a comment...</em><span class="fd__send"><svg viewBox="0 0 24 24"><path d="M12 19V6M6.5 11.5 12 6l5.5 5.5"/></svg></span></span>
+                                    </div>
+                                    <div class="fd__time"><span class="fd__prog"><i></i><span class="fd__knob"></span></span><b data-len="44">0:13 / 0:44</b></div>
+                                </div>
+                            </figure>
+
+                            <figure class="fd__clip">
+                                <span class="fd__amb" style="background-image:url('assets/reel-debate-amb.jpg')"></span>
+                                <div class="fd__media">
+                                    <video class="fd__pic" muted loop playsinline preload="none" poster="assets/hero-clip.jpg" width="596" height="638">
+                                        <source src="assets/hero-clip.webm" type="video/webm">
+                                        <source src="assets/hero-clip.mp4" type="video/mp4">
+                                    </video>
+                                    <span class="fd__who"><i></i>@Fronda</span>
+                                </div>
+                                <div class="fd__under">
+                                    <p class="fd__cap">Should we prioritize logic over emotion in the dis… <b>more</b></p>
+                                    <div class="fd__row">
+                                        <span class="fd__act fd__act--like"><svg viewBox="0 0 24 24"><path d="M12 1.8c.8 5.6 3.6 8.4 9.2 9.2-5.6.8-8.4 3.6-9.2 9.2-.8-5.6-3.6-8.4-9.2-9.2 5.6-.8 8.4-3.6 9.2-9.2z"/></svg><i>Like</i><b>3,128</b></span>
+                                        <span class="fd__act"><svg viewBox="0 0 24 24"><path d="M12 3.2c5 0 9 3.4 9 7.7s-4 7.7-9 7.7c-1 0-2-.1-2.9-.4L4.6 20.4l1.2-3.9C4 15.1 3 13.1 3 10.9c0-4.3 4-7.7 9-7.7z"/></svg><i>Comment</i><b>842</b></span>
+                                        <span class="fd__act"><svg viewBox="0 0 24 24"><path d="M6.2 3.2h11.6v17.6L12 16.8l-5.8 4z"/></svg><i>Save</i><b>219</b></span>
+                                        <span class="fd__input"><em>Add a comment...</em><span class="fd__send"><svg viewBox="0 0 24 24"><path d="M12 19V6M6.5 11.5 12 6l5.5 5.5"/></svg></span></span>
+                                    </div>
+                                    <div class="fd__time"><span class="fd__prog"><i></i><span class="fd__knob"></span></span><b data-len="14">0:04 / 0:14</b></div>
+                                </div>
+                            </figure>
+
+                            <figure class="fd__clip fd__clip--tall">
+                                <span class="fd__amb" style="background-image:url('assets/reel-tower-amb.jpg')"></span>
+                                <div class="fd__media">
+                                    <img class="fd__pic" src="assets/reel-tower.jpg" alt="" width="380" height="650" decoding="async">
+                                    <span class="fd__who"><i></i>@Fronda</span>
+                                </div>
+                                <div class="fd__under">
+                                    <p class="fd__cap">Why tall towers sway on purpose, and why that is… <b>more</b></p>
+                                    <div class="fd__row">
+                                        <span class="fd__act fd__act--like"><svg viewBox="0 0 24 24"><path d="M12 1.8c.8 5.6 3.6 8.4 9.2 9.2-5.6.8-8.4 3.6-9.2 9.2-.8-5.6-3.6-8.4-9.2-9.2 5.6-.8 8.4-3.6 9.2-9.2z"/></svg><i>Like</i><b>2,951</b></span>
+                                        <span class="fd__act"><svg viewBox="0 0 24 24"><path d="M12 3.2c5 0 9 3.4 9 7.7s-4 7.7-9 7.7c-1 0-2-.1-2.9-.4L4.6 20.4l1.2-3.9C4 15.1 3 13.1 3 10.9c0-4.3 4-7.7 9-7.7z"/></svg><i>Comment</i><b>276</b></span>
+                                        <span class="fd__act"><svg viewBox="0 0 24 24"><path d="M6.2 3.2h11.6v17.6L12 16.8l-5.8 4z"/></svg><i>Save</i><b>338</b></span>
+                                        <span class="fd__input"><em>Add a comment...</em><span class="fd__send"><svg viewBox="0 0 24 24"><path d="M12 19V6M6.5 11.5 12 6l5.5 5.5"/></svg></span></span>
+                                    </div>
+                                    <div class="fd__time"><span class="fd__prog"><i></i><span class="fd__knob"></span></span><b data-len="38">0:11 / 0:38</b></div>
+                                </div>
+                            </figure>
+                        </div>
+                    </div>
+
+                    <div class="fd__side">
+                        <ul class="fd__list" aria-label="Clips from the feed">
+                            <li><button class="fd__q is-on" type="button" aria-pressed="true">
+                                <span class="fd__n">01</span><span>Why aren’t polar bears actually white?</span><span class="fd__len">0:31</span><i class="fd__bar" data-bar></i>
+                            </button></li>
+                            <li><button class="fd__q" type="button" aria-pressed="false">
+                                <span class="fd__n">02</span><span>How does a car see the street?</span><span class="fd__len">0:44</span><i class="fd__bar" data-bar></i>
+                            </button></li>
+                            <li><button class="fd__q" type="button" aria-pressed="false">
+                                <span class="fd__n">03</span><span>Logic or emotion: which should win?</span><span class="fd__len">0:14</span><i class="fd__bar" data-bar></i>
+                            </button></li>
+                            <li><button class="fd__q" type="button" aria-pressed="false">
+                                <span class="fd__n">04</span><span>Why do skyscrapers sway on purpose?</span><span class="fd__len">0:38</span><i class="fd__bar" data-bar></i>
+                            </button></li>
+                        </ul>
+
+                        <div class="fd__points">
+                            <article class="fd__pt is-on">
+                                <p class="fd__pt-q">01 · Why aren’t polar bears actually white?</p>
+                                <span class="fd__tag">THE POINT</span>
+                                <p class="fd__text"><span>Their fur is clear and hollow.</span> <span>It only looks white.</span> <span>The skin underneath is black.</span></p>
+                            </article>
+                            <article class="fd__pt">
+                                <p class="fd__pt-q">02 · How does a car see the street?</p>
+                                <span class="fd__tag">THE POINT</span>
+                                <p class="fd__text"><span>Lidar fires laser pulses and times how long they take to bounce back.</span> <span>Those delays become a 3D map.</span></p>
+                            </article>
+                            <article class="fd__pt">
+                                <p class="fd__pt-q">03 · Logic or emotion: which should win?</p>
+                                <span class="fd__tag">THE POINT</span>
+                                <p class="fd__text"><span>Emotion tells you what matters.</span> <span>Logic tells you what to do about it.</span></p>
+                            </article>
+                            <article class="fd__pt">
+                                <p class="fd__pt-q">04 · Why do skyscrapers sway on purpose?</p>
+                                <span class="fd__tag">THE POINT</span>
+                                <p class="fd__text"><span>A rigid tower fights the wind and loses.</span> <span>A tower built to flex a little absorbs it.</span></p>
+                            </article>
+                        </div>
+
+                        <p class="fd__more">
+                            Every clip has a <b>Deep Dive</b> for the full story. Disagree?
+                            <a href="#features">Answer on camera<svg viewBox="0 0 9 6" shape-rendering="crispEdges" aria-hidden="true"><path fill="currentColor" d="M6 0h1v6h-1zM7 1h1v4h-1zM0 2h6v2h-6zM8 2h1v2h-1z"/></svg></a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             02 — HOW IT WORKS: one scene that plays the whole loop. You film
+             a point; answers come in as clips of their own; the vote and the
+             logic check lift the clearest one to the top. The logo's camera
+             plays every part. clips.js runs it (the three steps take turns
+             while the slide is on screen, a tap takes over); without script
+             the scene is held on its last step and all three steps are
+             written out beside it.
+             ============================================================ -->
+        <section class="section section--features section--3d-features" id="features" data-inview>
+            <!-- the logo's black, dissolving into the page at both edges -->
+            <div class="px-screen" aria-hidden="true"></div>
+            <div class="section__container">
+                <div class="section__header section__header--stack">
+                    <span class="section__label">[ 02 — HOW IT WORKS ]</span>
+                    <h2 class="section__title">MAKE A POINT.<br>GET ANSWERED. <br class="hw-br"><span class="st-title-accent">THE BEST ONE WINS.</span></h2>
+                </div>
+
+                <div class="hw" id="how" data-step="3">
+                    <ol class="hw__steps" aria-label="How it works, in three steps">
+                        <li><button class="hw__step" type="button" aria-pressed="false" style="--dur:6.5s">
+                            <span class="hw__n">01</span>
+                            <span class="hw__h">Make a point</span>
+                            <span class="hw__p">Film one clear thing: a fact, a how-to, a take you can back up. One short clip, your face on camera.</span>
+                            <i class="hw__bar" data-bar></i>
+                        </button></li>
+                        <li><button class="hw__step" type="button" aria-pressed="false" style="--dur:6s">
+                            <span class="hw__n">02</span>
+                            <span class="hw__h">Get answered</span>
+                            <span class="hw__p">Anyone can answer with a clip of their own. Replies stack under yours, so it stays a conversation, not a comment war.</span>
+                            <i class="hw__bar" data-bar></i>
+                        </button></li>
+                        <li><button class="hw__step" type="button" aria-pressed="false" style="--dur:8s">
+                            <span class="hw__n">03</span>
+                            <span class="hw__h">The best one wins</span>
+                            <span class="hw__p">Viewers vote on substance and Orvelis checks the logic. The clearest answer rises, not the loudest.</span>
+                            <i class="hw__bar" data-bar></i>
+                        </button></li>
+                    </ol>
+
+                    <!-- the scene: the app's Debate Thread, on the same phone as slide 01.
+                         Step 1 your clip goes up as a thesis; step 2 the arguments come
+                         in, on camera, for or against; step 3 the votes sort them by
+                         strength and the clearest one takes the top. clips.js types the
+                         claim, runs the clock and counts; the rest is CSS on data-step. -->
+                    <div class="hw__stage" aria-hidden="true">
+                        <div class="fd__phone hw__phone">
+                            <span class="fd__notch"></span>
+                            <div class="fd__screen hw__app">
+                                <div class="hw__top">
+                                    <div class="fd__status"><b>9:41</b><i></i></div>
+                                    <div class="hw__head"><svg class="hw__back" viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></svg><b>Debate Thread</b><span class="hw__likes"><svg viewBox="0 0 24 24"><path d="M12 1.8c.8 5.6 3.6 8.4 9.2 9.2-5.6.8-8.4 3.6-9.2 9.2-.8-5.6-3.6-8.4-9.2-9.2 5.6-.8 8.4-3.6 9.2-9.2z"/></svg>1,204</span></div>
+                                </div>
+
+                                <div class="hw__body">
+                                    <article class="hw__thesis">
+                                        <div class="hw__by"><span class="hw__av">P</span><b>pro_logic_22</b><time>now</time></div>
+                                        <div class="hw__main">
+                                            <span class="hw__vid hw__vid--rec"><i class="hw__dot"></i><i class="hw__play"></i><b data-clock>0:24</b></span>
+                                            <div class="hw__claim">
+                                                <span class="hw__badge">THESIS</span>
+                                                <p><span data-typed>Phones should be banned in class.</span><i class="hw__caret"></i></p>
+                                            </div>
+                                        </div>
+                                        <div class="hw__foot">
+                                            <span class="hw__stats"><svg viewBox="0 0 24 24"><path d="M9.2 17.6h5.6M10 20.6h4M12 3.2a6.1 6.1 0 0 0-3.7 11c.7.6 1 1.3 1 2.1v.3h5.4v-.3c0-.8.3-1.5 1-2.1A6.1 6.1 0 0 0 12 3.2z"/></svg><b>1.2K</b> Reputation<span class="hw__dotsep"></span><svg viewBox="0 0 24 24"><path d="M12 4c4.7 0 8.4 3.1 8.4 7.1s-3.7 7.1-8.4 7.1c-.9 0-1.8-.1-2.6-.4l-4.3 2 1.1-3.6C4.6 14.9 3.6 13.1 3.6 11.1 3.6 7.1 7.3 4 12 4z"/></svg><b data-replies>2</b> Arguments</span>
+                                            <span class="hw__post">Post</span>
+                                        </div>
+                                    </article>
+
+                                    <div class="hw__thread">
+                                        <p class="hw__empty">No arguments yet. Be the first to logic test this.</p>
+
+                                        <div class="hw__bal">
+                                            <span class="hw__bal-t">Logic Balance</span>
+                                            <div class="hw__bal-row"><b data-to="276">276</b><span class="hw__track"><i></i></span><b data-to="38">38</b></div>
+                                            <div class="hw__bal-lab"><span>FOR (1)</span><span>AGAINST (1)</span></div>
+                                        </div>
+
+                                        <div class="hw__args-h"><b>Arguments</b><span data-replies>2</span><em>BY STRENGTH</em></div>
+
+                                        <ol class="hw__args">
+                                            <li class="hw__arg hw__arg--against hw__arg--a">
+                                                <div class="hw__by"><span class="hw__av">D</span><b>d_marek</b><span class="hw__side">AGAINST</span><time>2m</time></div>
+                                                <p class="hw__say">LOL no. It’s 2026.</p>
+                                                <div class="hw__foot"><span class="hw__vid hw__vid--sm"><i class="hw__play"></i><b>0:09</b></span><span class="hw__vote"><svg viewBox="0 0 24 24"><path d="M9.2 17.6h5.6M10 20.6h4M12 3.2a6.1 6.1 0 0 0-3.7 11c.7.6 1 1.3 1 2.1v.3h5.4v-.3c0-.8.3-1.5 1-2.1A6.1 6.1 0 0 0 12 3.2z"/></svg><b data-to="38">38</b></span><span class="hw__reply"><svg viewBox="0 0 24 24"><path d="M12 4c4.7 0 8.4 3.1 8.4 7.1s-3.7 7.1-8.4 7.1c-.9 0-1.8-.1-2.6-.4l-4.3 2 1.1-3.6C4.6 14.9 3.6 13.1 3.6 11.1 3.6 7.1 7.3 4 12 4z"/></svg>Reply</span></div>
+                                            </li>
+                                            <li class="hw__arg hw__arg--for hw__arg--b">
+                                                <div class="hw__by"><span class="hw__av">N</span><b>nova_k</b><span class="hw__side">FOR</span><time>1m</time></div>
+                                                <p class="hw__say">Ban them in lessons, keep them at lunch. The problem is attention, not phones.</p>
+                                                <div class="hw__foot"><span class="hw__vid hw__vid--sm"><i class="hw__play"></i><b>0:41</b></span><span class="hw__vote"><svg viewBox="0 0 24 24"><path d="M9.2 17.6h5.6M10 20.6h4M12 3.2a6.1 6.1 0 0 0-3.7 11c.7.6 1 1.3 1 2.1v.3h5.4v-.3c0-.8.3-1.5 1-2.1A6.1 6.1 0 0 0 12 3.2z"/></svg><b data-to="276">276</b></span><span class="hw__reply"><svg viewBox="0 0 24 24"><path d="M12 4c4.7 0 8.4 3.1 8.4 7.1s-3.7 7.1-8.4 7.1c-.9 0-1.8-.1-2.6-.4l-4.3 2 1.1-3.6C4.6 14.9 3.6 13.1 3.6 11.1 3.6 7.1 7.3 4 12 4z"/></svg>Reply</span></div>
+                                            </li>
+                                        </ol>
+                                    </div>
+                                </div>
+
+                                <div class="hw__stance">
+                                    <span class="hw__vbtn hw__vbtn--for"><svg viewBox="0 0 24 24"><rect x="2.8" y="6.4" width="12.4" height="11.2" rx="3"/><path d="M15.2 10.6 21 7.4v9.2l-5.8-3.2z"/></svg>Video FOR</span>
+                                    <span class="hw__vbtn"><svg viewBox="0 0 24 24"><rect x="2.8" y="6.4" width="12.4" height="11.2" rx="3"/><path d="M15.2 10.6 21 7.4v9.2l-5.8-3.2z"/></svg>Video AGAINST</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Curiosity field notes: choose a question, take something with you. -->
+        <section class="catch curiosity-edit" id="catch" aria-labelledby="catchTitle" data-inview>
+            <div class="cq-shell">
+                <div class="cq-mast"><span><i aria-hidden="true">✳</i> ORVELIS / FIELD NOTES</span><span>A LITTLE CURIOSITY GOES A LONG WAY.</span></div>
+                <div class="cq-layout">
+                    <div class="cq-copy">
+                        <span class="cq-kicker">FOLLOW THE QUESTION <span aria-hidden="true">↘</span></span>
+                        <h2 id="catchTitle" class="cq-title">Small clips.<br>Big <em>aha.</em><span aria-hidden="true">✳</span></h2>
+                        <p class="cq-lede">Start with a question.<br>Leave with a different way to see it.</p>
+                        <div class="catch__questions cq-questions" role="group" aria-label="Choose a question to explore" hidden>
+                            <div class="cq-pick"><span>PICK YOUR FIRST “WHY”</span><span aria-hidden="true">↓</span></div>
+                            <div class="cq-topics">
+                                <button class="cq-topic is-selected" type="button" data-curiosity="0" aria-pressed="true" aria-label="Why polar bears look white">
+                                    <span class="cq-topic__image"><img src="assets/reel-bear.jpg" alt="" width="150" height="110" loading="lazy" decoding="async"><i aria-hidden="true">01</i><span class="cq-topic__selected" aria-hidden="true">↗</span></span>
+                                    <small>NATURE</small><b>Why white?</b><span class="cq-topic__line" aria-hidden="true"></span>
+                                </button>
+                                <button class="cq-topic" type="button" data-curiosity="1" aria-pressed="false" aria-label="How a car sees the street">
+                                    <span class="cq-topic__image"><img src="assets/reel-lidar.jpg" alt="" width="150" height="110" loading="lazy" decoding="async"><i aria-hidden="true">02</i><span class="cq-topic__selected" aria-hidden="true">↗</span></span>
+                                    <small>TECHNOLOGY</small><b>A car’s eyes.</b><span class="cq-topic__line" aria-hidden="true"></span>
+                                </button>
+                                <button class="cq-topic" type="button" data-curiosity="2" aria-pressed="false" aria-label="Why skyscrapers sway">
+                                    <span class="cq-topic__image"><img src="assets/reel-tower.jpg" alt="" width="150" height="110" loading="lazy" decoding="async"><i aria-hidden="true">03</i><span class="cq-topic__selected" aria-hidden="true">↗</span></span>
+                                    <small>ARCHITECTURE</small><b>Built to sway.</b><span class="cq-topic__line" aria-hidden="true"></span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="cq-process" aria-hidden="true"><span>A QUESTION</span><i>→</i><span>A CLIP</span><i>→</i><b>AN AHA.</b></div>
+                    </div>
+                    <div class="catch__visual cq-sheet">
+                        <div class="cq-sheet__top"><span>THE CURIOSITY FILE</span><span>↘ OPEN A NEW PERSPECTIVE</span></div>
+                        <a class="catch__feature cq-feature" href="#manifesto" data-featured-clip="0" aria-label="Explore the polar bear clip in the feed">
+                            <div class="cq-feature__media">
+                                <img class="catch__poster" src="assets/reel-bear.jpg" alt="A polar bear in the featured Datariot clip" width="600" height="360" loading="lazy" decoding="async">
+                                <span class="cq-feature__duration" data-curiosity-duration>0:31</span>
+                                <span class="cq-feature__arrow" aria-hidden="true">↗</span>
+                            </div>
+                            <div class="cq-feature__copy">
+                                <span class="cq-feature__topic" data-curiosity-topic>01 / NATURE</span>
+                                <h3 data-curiosity-title>Why aren’t polar bears actually white?</h3>
+                                <span class="cq-feature__action">Explore this clip <span aria-hidden="true">↗</span></span>
+                            </div>
+                        </a>
+                        <aside class="catch__idea cq-idea" aria-label="A takeaway from the featured clip">
+                            <div class="cq-idea__label"><span aria-hidden="true">✳</span> THE AHA, BY ORVELIS <span class="cq-idea__annotation" aria-hidden="true">↳</span></div>
+                            <p><span data-curiosity-lead>Their fur is clear.</span><br><em data-curiosity-point>It only looks white.</em></p>
+                            <span class="catch__idea-foot" data-curiosity-foot>A little context changes the picture.</span>
+                        </aside>
+                        <div class="cq-sheet__foot"><span>ONE CLIP. SOMETHING TO KEEP.</span><span class="cq-code" aria-hidden="true"></span></div>
+                    </div>
+                </div>
+            </div>
+            <span class="feed-sr" data-curiosity-status role="status" aria-live="polite" aria-atomic="true"></span>
+        </section>
+
+
+        <!-- The Arena: two perspectives, one question worth thinking about. -->
+        <section class="section arena-section arena-duel" id="debates" data-inview aria-labelledby="arenaTitle">
+            <div class="arena__inner">
+                <div class="arena__masthead"><span class="arena__chapter"><b>03</b> THE ARENA</span><span class="arena__edition">OPEN MINDS. STRONGER IDEAS.</span></div>
+                <div class="arena__header">
+                    <h2 class="arena__title" id="arenaTitle"><span>Change</span><em>my mind.</em></h2>
+                    <div class="arena__intro">
+                        <span class="arena__eyebrow">A DIFFERENT POINT OF VIEW</span>
+                        <p class="arena__intro-lead">Two perspectives.<br>One open mind.</p>
+                        <p class="arena__instruction">Explore both sides. Back a take. See what challenges it.</p>
+                    </div>
+                </div>
+                <div class="ar" id="arena">
+                    <div class="ar__topic-row">
+                        <span class="ar__topic-label">PICK A QUESTION <span aria-hidden="true">↘</span></span>
+                        <div class="ar__topics" role="group" aria-label="Debate topic">
+                            <button type="button" class="ar-topic" data-topic="work" aria-pressed="true"><span>01</span> Work <i aria-hidden="true">↗</i></button>
+                            <button type="button" class="ar-topic" data-topic="ai" aria-pressed="false"><span>02</span> AI <i aria-hidden="true">↗</i></button>
+                            <button type="button" class="ar-topic" data-topic="creativity" aria-pressed="false"><span>03</span> Creativity <i aria-hidden="true">↗</i></button>
+                        </div>
+                    </div>
+                    <div class="duel-question"><span>THE QUESTION ON THE TABLE</span><h3 class="ar__question" data-question>Where does our best work happen?</h3></div>
+                    <div class="ar-sides">
+                        <article class="ar-side ar-side--for" aria-labelledby="arenaTakeA">
+                            <div class="duel-art" aria-hidden="true"><span class="ar__letter">A</span><svg viewBox="0 0 180 90" fill="none"><path d="M5 65h130m-22-23 23 23-23 23M19 44h115m-22-23 23 23-23 23M34 23h100m-22-21 23 21-23 23" stroke="currentColor" stroke-width="1.2"/><path d="M55 3h120v82" stroke="currentColor" stroke-opacity=".2" stroke-dasharray="2 4"/></svg><span class="ar__picked">YOUR PICK ✓</span></div>
+                            <div class="duel-body">
+                                <div class="ar__position"><span data-position>THE CASE FOR REMOTE</span></div>
+                                <h3 id="arenaTakeA" data-title>Less office.<br>More focus.</h3>
+                                <blockquote data-quote>“Great work needs room to think, not another commute. Let people choose where they do it best.”</blockquote>
+                                <button class="ar-vote" type="button" data-side="for" aria-pressed="false" aria-label="Back take A: remote work"><span data-vote-label>Back this take</span><span class="ar-vote__icon" aria-hidden="true">↗</span></button>
+                            </div>
+                        </article>
+                        <div class="ar__pivot" aria-hidden="true"><span>VS</span></div>
+                        <article class="ar-side ar-side--against" aria-labelledby="arenaTakeB">
+                            <div class="duel-art" aria-hidden="true"><span class="ar__letter">B</span><svg viewBox="0 0 180 90" fill="none"><path d="M175 65H45m22-23L44 65l23 23M161 44H46m22-23L45 44l23 23M146 23H46M68 2 45 23l23 23" stroke="currentColor" stroke-width="1.2"/><path d="M125 3H5v82" stroke="currentColor" stroke-opacity=".2" stroke-dasharray="2 4"/></svg><span class="ar__picked">YOUR PICK ✓</span></div>
+                            <div class="duel-body">
+                                <div class="ar__position"><span data-position>THE CASE FOR TOGETHER</span></div>
+                                <h3 id="arenaTakeB" data-title>Same room.<br>New ideas.</h3>
+                                <blockquote data-quote>“You can schedule a call. You can’t schedule every unexpected idea, or every moment someone needs a mentor.”</blockquote>
+                                <button class="ar-vote" type="button" data-side="against" aria-pressed="false" aria-label="Back take B: working together"><span data-vote-label>Back this take</span><span class="ar-vote__icon" aria-hidden="true">↗</span></button>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="ar__challenge" aria-live="polite" aria-atomic="true">
+                        <span class="ar__challenge-icon" aria-hidden="true">✳</span>
+                        <div><span class="ar__challenge-label" data-challenge-label>YOUR TURN</span><p data-challenge>Pick the take you believe. We’ll give it a harder question.</p></div>
+                        <button class="ar__reset" type="button" hidden>Start again <span aria-hidden="true">↺</span></button>
+                    </div>
+                    <div class="ar__footer"><span>Interactive example · your choice stays on this page</span><a href="#ai-core">Meet the thinking layer <span aria-hidden="true">↗</span></a></div>
+                    <noscript><p class="ar__noscript">Enable JavaScript to switch topics and try the debate.</p></noscript>
+                </div>
+            </div>
+        </section>
+
+        <!-- ORVELIS AI CORE SECTION -->
+        <section class="section section--ai" id="ai-core" data-inview>
+            <!-- the dithered wave behind the slide: pixel-field.js draws it,
+                 the CSS navy fill stands in when there is no WebGL -->
+            <div class="px-field" aria-hidden="true">
+                <canvas class="px-field__canvas"></canvas>
+            </div>
+
+            <div class="section__container">
+                <div class="ai-core-layout">
+                    <div class="ai-showcase__visual">
+                        <div class="aic-card">
+                            <div class="aic-strip">
+                                <span class="aic-strip-ticks" aria-hidden="true"></span>
+                                <span class="aic-strip-id">ORV / 3.0.1 / ARENA-LINK</span>
+                            </div>
+
+                            <div class="aic-head">
+                                <span class="aic-avatar" aria-hidden="true">
+                                    <svg viewBox="0 0 12 12" shape-rendering="crispEdges"><path fill="currentColor" d="M5 0h2v2h-2zM2 2h8v1h-8zM1 3h2v1h-2zM9 3h2v1h-2zM1 4h1v1h-1zM10 4h1v1h-1zM0 5h2v2h-2zM3 5h2v2h-2zM7 5h2v2h-2zM10 5h2v2h-2zM1 7h1v2h-1zM10 7h1v2h-1zM4 8h4v1h-4zM1 9h2v1h-2zM9 9h2v1h-2zM2 10h8v1h-8z"/></svg>
+                                </span>
+                                <span class="aic-head-text">
+                                    <b>ORVELIS</b>
+                                    <i>AI CORE <em>//</em> CONSENSUS ENGINE</i>
+                                </span>
+                                <span class="aic-online"><i aria-hidden="true"></i>ONLINE</span>
+                            </div>
+
+                            <div class="aic-now">
+                                <span class="aic-now-thumb" aria-hidden="true">
+                                    <svg viewBox="0 0 5 7" shape-rendering="crispEdges"><path fill="currentColor" d="M0 0h1v7h-1zM1 1h1v5h-1zM2 2h1v3h-1zM3 3h1v1h-1z"/></svg>
+                                </span>
+                                <span class="aic-now-body">
+                                    <b>NOW SCANNING</b>
+                                    <i>@tomas.thinks &mdash; ice cream &amp; sharks</i>
+                                </span>
+                                <span class="aic-now-wave" aria-hidden="true">
+                                    <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+                                </span>
+                            </div>
+
+                            <div class="aic-block">
+                                <div class="aic-block-head">
+                                    <span class="aic-tag">LOGIC SCORE</span>
+                                    <span class="aic-block-id">01</span>
+                                </div>
+                                <div class="aic-score">
+                                    <span class="aic-score-num">92</span>
+                                    <span class="aic-score-unit">LQI</span>
+                                    <span class="aic-score-delta">
+                                        <svg viewBox="0 0 5 3" shape-rendering="crispEdges" aria-hidden="true"><path fill="currentColor" d="M2 0h1v1h-1zM1 1h3v1h-3zM0 2h5v1h-5z"/></svg>
+                                        15%
+                                    </span>
+                                </div>
+                                <div class="aic-meter" aria-hidden="true">
+                                    <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+                                    <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+                                </div>
+                                <span class="aic-state">CLEAR AND FAIR</span>
+                                <p class="aic-copy">Clear claim, a good example, and the real cause named. One source would make it airtight.</p>
+                            </div>
+
+                            <div class="aic-block">
+                                <div class="aic-block-head">
+                                    <span class="aic-tag">THE POINT, CHECKED</span>
+                                    <span class="aic-block-id">02</span>
+                                </div>
+                                <div class="aic-row aic-row--ok">
+                                    <span class="aic-row-tag">THE POINT</span>
+                                    <p class="aic-copy">Rising together doesn’t mean one causes the other: summer drives both.</p>
+                                </div>
+                                <div class="aic-row aic-row--warn">
+                                    <span class="aic-row-tag">WATCH FOR</span>
+                                    <p class="aic-copy">The chart at 0:12 has no source yet, and shark numbers vary a lot by coast.</p>
+                                </div>
+                            </div>
+
+                            <div class="aic-foot">
+                                <span class="aic-foot-item"><b>0.4</b><i>S LATENCY</i></span>
+                                <span class="aic-foot-item"><b>12</b><i>SIGNALS</i></span>
+                                <span class="aic-foot-item"><b>96</b><i>% CONFIDENCE</i></span>
+                            </div>
+                        </div>
+
+                        <p class="aic-formula">
+                            <span>1 clip</span>
+                            <svg viewBox="0 0 9 6" shape-rendering="crispEdges" role="img" aria-label="becomes"><path fill="currentColor" d="M6 0h1v6h-1zM7 1h1v4h-1zM0 2h6v2h-6zM8 2h1v2h-1z"/></svg>
+                            <span>1 point, checked</span>
+                        </p>
+                    </div>
+
+                    <div class="ai-showcase__content">
+                        <div class="aic-intro">
+                            <span class="section__label">[ 04 — ORVELIS AI ]</span>
+                            <h2 class="section__title">IT FINDS THE POINT.<br><span class="aic-title-accent">AND THE HOLES IN IT.</span></h2>
+                            <p class="aic-lede">
+                                Meet <strong>Orvelis</strong>, the AI inside every clip. It pulls out what is actually being claimed, checks the logic, flags the tricks to the second and builds a Deep Dive, so you can go further than sixty seconds.
+                            </p>
+                        </div>
+
+                        <div class="aic-stack">
+                            <div class="aic-mod">
+                                <span class="aic-mod-index">01</span>
+                                <span class="aic-mod-tag">[ LOGIC // FALLACIES ]</span>
+                                <h4>Logic &amp; fallacy detection</h4>
+                                <p>Flags logical fallacies, emotional manipulation and rhetorical traps automatically, timestamped to the second they happen on camera.</p>
+                                <span class="aic-mod-meta">
+                                    <em>14 FALLACY CLASSES</em><em>REAL-TIME</em>
+                                </span>
+                            </div>
+                            <div class="aic-mod">
+                                <span class="aic-mod-index">02</span>
+                                <span class="aic-mod-tag">[ DEEP DIVE // EVERY CLIP ]</span>
+                                <h4>A Deep Dive on every clip</h4>
+                                <p>A summary, three key terms and three places to learn more, plus a chat that answers your questions about the video.</p>
+                                <p><a href="https://docs.datariot.xyz/#orvelis">How Orvelis works &amp; what is planned ↗</a></p>
+                                <span class="aic-mod-meta">
+                                    <em>SUMMARY</em><em>ASK AI</em>
+                                </span>
+                            </div>
+                            <div class="aic-mod">
+                                <span class="aic-mod-index">03</span>
+                                <span class="aic-mod-tag">[ PEOPLE // IDENTITY ]</span>
+                                <h4>One face, one voice</h4>
+                                <p>Every clip is tied to a verified human on camera. No anonymous pile-ons, no sock puppets, no bot swarms in the vote.</p>
+                                <span class="aic-mod-meta">
+                                    <em>100% VERIFIED</em><em>NO ANON VOTES</em>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- GLOBAL NETWORK SECTION -->
+        <section class="section section--global gnet" id="global" data-inview>
+            <div class="section__container">
+
+                <div class="gnet__eyebrow">
+                    <span class="gnet__eyebrow-tag">[ 05 — GLOBAL NETWORK ]</span>
+                    <span class="gnet__eyebrow-rule"></span>
+                    <span class="gnet__eyebrow-meta">
+                        <span class="gnet__pulse"></span>
+                        NETWORK LIVE
+                    </span>
+                </div>
+
+                <div class="gnet__head">
+                    <h2 class="section__title">Good ideas travel.</h2>
+                    <p class="gnet__lede">
+                        A clip made in Lagos gets answered from Warsaw before it finishes buffering.
+                        Topics cluster by meaning, not by map.
+                    </p>
+                </div>
+
+                <div class="gnet__grid">
+
+                    <!-- the map -->
+                    <div class="gnet__map">
+                        <div class="gnet__map-frame">
+                            <span class="gnet__corner gnet__corner--tl" aria-hidden="true"></span>
+                            <span class="gnet__corner gnet__corner--br" aria-hidden="true"></span>
+                            <div class="orvelis-canvas-container gnet__canvas" id="canvas-3d-globe"></div>
+
+                            <div class="gnet__map-hud">
+                                <span class="gnet__map-tag">[ TOPOLOGY // LIVE ]</span>
+                                <span class="gnet__map-coord">LAT 51.50 / LON -0.12</span>
+                            </div>
+
+                            <!-- clusters called out on the sphere -->
+                            <span class="gnet__pin gnet__pin--1"><i></i>EU-WEST</span>
+                            <span class="gnet__pin gnet__pin--2"><i></i>SA-EAST</span>
+                            <span class="gnet__pin gnet__pin--3"><i></i>APAC</span>
+                        </div>
+
+                        <div class="gnet__readout">
+                            <span class="gnet__readout-item"><b>1,247</b><i>ACTIVE NODES</i></span>
+                            <span class="gnet__readout-item"><b>384</b><i>LIVE CLUSTERS</i></span>
+                            <span class="gnet__readout-item"><b>62</b><i>COUNTRIES</i></span>
+                            <span class="gnet__readout-item"><b>34</b><i>MS MEDIAN HOP</i></span>
+                        </div>
+                    </div>
+
+                    <!-- the regions board -->
+                    <div class="gnet__board">
+                        <div class="gnet__board-head">
+                            <span class="gnet__board-title">REGIONS BY LIVE DEBATE</span>
+                            <span class="gnet__board-now">NOW</span>
+                        </div>
+
+                        <ol class="gnet__regions">
+                            <li class="gnet__region">
+                                <span class="gnet__region-rank">01</span>
+                                <span class="gnet__region-name">EU&nbsp;WEST</span>
+                                <span class="gnet__region-bar"><i style="width: 92%"></i></span>
+                                <span class="gnet__region-val">418</span>
+                            </li>
+                            <li class="gnet__region">
+                                <span class="gnet__region-rank">02</span>
+                                <span class="gnet__region-name">NA&nbsp;EAST</span>
+                                <span class="gnet__region-bar"><i style="width: 78%"></i></span>
+                                <span class="gnet__region-val">356</span>
+                            </li>
+                            <li class="gnet__region">
+                                <span class="gnet__region-rank">03</span>
+                                <span class="gnet__region-name">APAC</span>
+                                <span class="gnet__region-bar"><i style="width: 61%"></i></span>
+                                <span class="gnet__region-val">277</span>
+                            </li>
+                            <li class="gnet__region">
+                                <span class="gnet__region-rank">04</span>
+                                <span class="gnet__region-name">SA&nbsp;EAST</span>
+                                <span class="gnet__region-bar"><i style="width: 44%"></i></span>
+                                <span class="gnet__region-val">201</span>
+                            </li>
+                            <li class="gnet__region">
+                                <span class="gnet__region-rank">05</span>
+                                <span class="gnet__region-name">AFRICA</span>
+                                <span class="gnet__region-bar"><i style="width: 33%"></i></span>
+                                <span class="gnet__region-val">149</span>
+                            </li>
+                        </ol>
+
+                        <div class="gnet__feed">
+                            <span class="gnet__feed-title">[ CROSS-BORDER REPLIES ]</span>
+                            <ul class="gnet__feed-list">
+                                <li><em>LAGOS</em><span class="gnet__arrow" aria-hidden="true"></span><em>WARSAW</em><i>0:41</i></li>
+                                <li><em>SÃO PAULO</em><span class="gnet__arrow" aria-hidden="true"></span><em>LISBON</em><i>1:12</i></li>
+                                <li><em>JAKARTA</em><span class="gnet__arrow" aria-hidden="true"></span><em>BERLIN</em><i>0:58</i></li>
+                                <li><em>TORONTO</em><span class="gnet__arrow" aria-hidden="true"></span><em>SEOUL</em><i>2:04</i></li>
+                            </ul>
+                        </div>
+
+                        <p class="gnet__note">
+                            Topics are grouped by meaning, so a clip finds the people who care about it,
+                            not the people who happen to share a timezone.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Discord invitation: one reason to join, one clear next step. -->
+        <section class="section discord-invitation" id="beta" data-inview aria-labelledby="accessTitle">
+            <div class="dc-inner">
+                <div class="dc-mast"><span><b>06</b> THE NEXT CHAPTER</span><span>DATARIOT / DISCORD</span></div>
+                <div class="dc-layout">
+                    <div class="dc-copy">
+                        <h2 id="accessTitle">You’re early.<br><span>Stay close.</span></h2>
+                        <p class="dc-lede">New releases. The next move for Orvelis.<br>Hear it straight from Datariot.</p>
+                    </div>
+                    <div class="dc-pass-wrap">
+                        <div class="dc-pass">
+                            <div class="dc-pass__main">
+                                <div class="dc-pass__brand"><img src="assets/datariot-mark.jpg?v=brand-20261028" alt="" width="42" height="42" loading="lazy" decoding="async"><div><b>datariot</b><span>OFFICIAL DISCORD</span></div></div>
+                                <div class="dc-pass__content">
+                                    <ul class="dc-pass__updates" aria-label="What to follow on Discord">
+                                        <li><span>Launch announcements</span></li>
+                                        <li><span>New releases &amp; features</span></li>
+                                        <li><span>What’s next for Orvelis</span></li>
+                                    </ul>
+                                </div>
+                                <div class="dc-pass__action">
+                                    <a class="dc-join" href="https://discord.gg/SKWCux4bb" target="_blank" rel="noopener noreferrer"><span class="dc-join__text"><b>Join our Discord</b></span><span class="dc-join__arrow" aria-hidden="true">↗</span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- 08 — FAQ -->
+        <section class="section faq" id="faq" data-inview>
+            <div class="faq__inner">
+                <div class="faq__head">
+                    <span class="faq__tag">[ 08 &mdash; FAQ ]</span>
+                    <h2 class="faq__title">Questions, <span class="hx-mark">answered.</span></h2>
+                    <p class="faq__lede">
+                        The short version of what Datariot is, how it works and what happens to your clips.
+                        Something missing? Ask us on <a href="https://discord.gg/SKWCux4bb" target="_blank" rel="noopener">Discord</a>.
+                    </p>
+                </div>
+                <div class="faq__list">
+                    <details class="faq__item" open>
+                        <summary><span class="faq__n">01</span><span class="faq__q">What is Datariot?</span><i class="faq__sign" aria-hidden="true"></i></summary>
+                        <div class="faq__a"><p>A short-video app where every clip has a point. People explain, show or argue something worth knowing, and anyone can answer back with a clip of their own.</p></div>
+                    </details>
+                    <details class="faq__item">
+                        <summary><span class="faq__n">02</span><span class="faq__q">How is it different from TikTok or Reels?</span><i class="faq__sign" aria-hidden="true"></i></summary>
+                        <div class="faq__a"><p>It is built around what a clip says, not how long it keeps you watching. Every clip has a Deep Dive, replies are videos instead of comment wars, and Orvelis, our AI, checks the logic.</p></div>
+                    </details>
+                    <details class="faq__item">
+                        <summary><span class="faq__n">03</span><span class="faq__q">What is Orvelis?</span><i class="faq__sign" aria-hidden="true"></i></summary>
+                        <div class="faq__a"><p>The AI inside Datariot. For every clip it builds a Deep Dive: a summary, three key terms and three places to learn more. It answers your questions about the video and flags fallacies and manipulation, timestamped to the second.</p></div>
+                    </details>
+                    <details class="faq__item">
+                        <summary><span class="faq__n">04</span><span class="faq__q">What is a video reply?</span><i class="faq__sign" aria-hidden="true"></i></summary>
+                        <div class="faq__a"><p>Instead of typing a comment, you answer on camera with a clip of your own. Replies stack under the original, so the whole exchange stays watchable from start to finish.</p></div>
+                    </details>
+                    <details class="faq__item">
+                        <summary><span class="faq__n">05</span><span class="faq__q">Who decides who made the better point?</span><i class="faq__sign" aria-hidden="true"></i></summary>
+                        <div class="faq__a"><p>Viewers vote, and Orvelis marks the logic. Votes come from verified people, so bots and sock puppets can&rsquo;t swing them.</p></div>
+                    </details>
+                    <details class="faq__item">
+                        <summary><span class="faq__n">06</span><span class="faq__q">Do I have to show my face?</span><i class="faq__sign" aria-hidden="true"></i></summary>
+                        <div class="faq__a"><p>To post, yes. Datariot is face-first: every clip is tied to a verified person on camera, which keeps anonymous pile-ons out.</p></div>
+                    </details>
+                    <details class="faq__item">
+                        <summary><span class="faq__n">07</span><span class="faq__q">What can I post about?</span><i class="faq__sign" aria-hidden="true"></i></summary>
+                        <div class="faq__a"><p>Anything you can explain, show or argue: science, engineering, AI, logic, sport, gaming, lifestyle, politics, comedy and more. Keep it educational, informative or constructive, and bring evidence when you argue.</p></div>
+                    </details>
+                    <details class="faq__item">
+                        <summary><span class="faq__n">08</span><span class="faq__q">When can I get it, and who can join?</span><i class="faq__sign" aria-hidden="true"></i></summary>
+                        <div class="faq__a"><p>Datariot is in beta. Explore the <a href="https://datariot.xyz">web app</a> or <a href="#beta">follow launch announcements in our Discord</a>. The iOS and Android apps are coming soon. You need to be 13 or older.</p></div>
+                    </details>
+                    <details class="faq__item">
+                        <summary><span class="faq__n">09</span><span class="faq__q">What happens to my data and my clips?</span><i class="faq__sign" aria-hidden="true"></i></summary>
+                        <div class="faq__a"><p>We don&rsquo;t sell your personal data. You keep ownership of everything you post, and you can ask us to delete your account and data at any time. The details are in our <a href="privacy.html">Privacy Policy</a>.</p></div>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER: the logo's screen, black with ice, dissolving in from the page -->
+        <footer class="foot" data-inview>
+            <div class="px-screen" aria-hidden="true"></div>
+            <div class="foot__inner">
+                <div class="foot__top">
+                    <div class="foot__brand">
+                        <img class="foot__logo" src="assets/logo.png?v=brand-20261021" alt="" width="96" height="96" loading="lazy" decoding="async">
+                        <div>
+                            <b class="foot__word">DATARIOT</b>
+                            <p class="foot__tag">Short videos with a point.</p>
+                        </div>
+                        <a class="foot__cta" href="#beta">Follow updates
+                            <svg viewBox="0 0 9 6" shape-rendering="crispEdges" aria-hidden="true"><path fill="currentColor" d="M6 0h1v6h-1zM7 1h1v4h-1zM0 2h6v2h-6zM8 2h1v2h-1z"/></svg>
+                        </a>
+                    </div>
+                    <nav class="foot__cols" aria-label="Footer">
+                        <div class="foot__col">
+                            <h5>[ PRODUCT ]</h5>
+                            <a href="#manifesto">The feed</a>
+                            <a href="#features">How it works</a>
+                            <a href="#debates">The arena</a>
+                            <a href="#ai-core">Orvelis AI</a>
+                            <a href="https://datariot.xyz">Web app</a>
+                        </div>
+                        <div class="foot__col">
+                            <h5>[ COMPANY ]</h5>
+                            <a href="#manifesto">Manifesto</a>
+                            <a href="https://docs.datariot.xyz">Documentation</a>
+                            <a href="#faq">FAQ</a>
+                            <a href="#">Careers</a>
+                            <a href="#">Press</a>
+                        </div>
+                        <div class="foot__col">
+                            <h5>[ LEGAL ]</h5>
+                            <a href="privacy.html">Privacy Policy</a>
+                            <a href="terms.html">Terms of Service</a>
+                            <a href="cookies.html">Cookie Policy</a>
+                        </div>
+                        <div class="foot__col">
+                            <h5>[ SOCIAL ]</h5>
+                            <a href="https://x.com/datariot.xyz" target="_blank" rel="noopener">X / Twitter</a>
+                            <a href="https://discord.gg/SKWCux4bb" target="_blank" rel="noopener">Discord</a>
+                        </div>
+                    </nav>
+                </div>
+                <div class="foot__big" aria-hidden="true">DATARIOT</div>
+                <div class="foot__bottom">
+                    <span>&copy; 2026 Datariot. All rights reserved.</span>
+                    <span class="foot__status"><i aria-hidden="true"></i>V0.1 BETA &middot; BUILT FOR CLIPS WITH A POINT</span>
+                    <span class="foot__legal">
+                        <a href="privacy.html">Privacy</a>
+                        <a href="terms.html">Terms</a>
+                        <a href="cookies.html">Cookies</a>
+                    </span>
+                </div>
+            </div>
+        </footer>
+
+    </main>
+
+    <!-- External Scripts (Handling everything now) -->
+    <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <!-- Premium Animation Libraries -->
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script defer src="https://unpkg.com/split-type"></script>
+    <!-- no three.js: the one 3D scene left, the globe in 05, is a pixel
+         canvas in clips.js now, and the 600 KB library blocked the page -->
+    <!-- slide 04's dithered wave: plain WebGL, no three.js -->
+    <script defer src="pixel-field.js?v=5.7.5"></script>
+
+    <!-- the feed: the hero phone, the tap-a-question demo in 01, the arena vote and the globe -->
+    <script defer src="clips.js?v=arena-20261025"></script>
+    <script defer src="curiosity.js?v=1.0.0"></script>
+    <script defer src="script.js?v=5.7.2"></script>
+    <script>
+        // Only animate the flock while it can be seen.
+        document.addEventListener('DOMContentLoaded', () => {
+            const hero = document.getElementById('hero');
+            if (!hero) return;
+            const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+            let visible = true;
+            const update = () => hero.classList.toggle('sky-active', visible && !document.hidden && !motion.matches);
+            if ('IntersectionObserver' in window) {
+                new IntersectionObserver(([entry]) => {
+                    visible = entry.isIntersecting;
+                    update();
+                }).observe(hero);
+            }
+            document.addEventListener('visibilitychange', update);
+            if (motion.addEventListener) motion.addEventListener('change', update);
+            update();
+        });
+    </script>
+</body>
+
+</html>
+
